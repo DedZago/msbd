@@ -4,8 +4,8 @@
 *.joblib
 *.npy
 *.pkl
-.DS_Store
-.pytest_cache
+*.DS_Store
+*.pytest_cache
 __pycache__
 
 #---- Ignored files LaTeX ----#
