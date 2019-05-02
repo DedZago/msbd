@@ -7,6 +7,9 @@
 *.DS_Store
 *.pytest_cache
 __pycache__
+classification-task
+hasy-data
+hasy_tools.py
 
 #---- Ignored files LaTeX ----#
 ## Core latex/pdflatex auxiliary files:
