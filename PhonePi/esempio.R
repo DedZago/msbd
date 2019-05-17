@@ -1,5 +1,5 @@
 library(latex2exp)
-setwd("./Desktop/PhonePi_SampleServer-master/")
+#setwd("./Documents/git/msbd/PhonePi/")
 dati = read.csv("./data/bus/accelerometer.txt", header = F)
 a = sqrt(as.numeric(as.matrix(dati$V4))^2 +
            as.numeric(as.matrix(dati$V5))^2 +
