@@ -1,12 +1,17 @@
-\documentclass{report}
+\documentclass{article}
 \usepackage{../style/relazione}
+\usepackage{geometry}
+\addtolength{\textwidth}{1cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textheight}{4cm}
+\usepackage{siunitx}
 
-\title{\textsc{Titolo di Prova}}
-\author{Luisa Galtarossa\and Alberto Grassi\and Anna Montin\and Daniele Zago}
+\title{\textsc{Classificazione di attività tramite accelerometro del cellulare}}
+\author{Galtarossa Luisa\and Grassi Alberto\and Montin Anna\and Zago Daniele}
 \date{}
 
 \begin{document}
-\titlepage
-
-\subfile{modello-lineare}
+\maketitle
+\subfile{introduzione}
+\subfile{esplorativa}
 \end{document}

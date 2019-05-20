@@ -1,0 +1,26 @@
+\documentclass[./main.tex]{subfiles}
+
+\begin{document}
+\section{Introduzione}
+Nella seguente analisi si vuole affrontare un problema di classificazione di segnali, derivanti dalla misurazione dell'accelerazione a cui è sottoposto un cellulare durante varie attività fisiche. I dati sono stati raccolti tramite l'applicazione \texttt{PhonePi} \textbf{CIT}.\\
+Per le $j = 1, \ldots, $ \textbf{(scrivere quante)} attività, si dispongono di $n_j$ misurazioni a intervalli di ampiezza $\Delta t \approx \SI{10}{ms}$ della quantità
+$$
+\vec{a}_t = \begin{pmatrix}
+a_{xt}\\
+a_{yt}\\
+a_{zt}
+\end{pmatrix}\,,
+$$
+accelerazione del cellulare rispetto agli assi cartesiani di riferimento dell'accelerometro.\\
+\textbf{ASSI CELLULARE}\\
+L'analisi è stata condotta sull'intensità dell'accelerazione $a_t = \|\vec{a}_t\|$, ignorando l'effetto di disturbo dell'accelerazione di gravità.\\
+Ciascun  è stato diviso in intervalli di ampiezza \SI{2}{s}, sui quali sono state calcolate le seguenti variabili riassuntive del segnale:
+\begin{table}[H]
+	\begin{tabular}{ll}
+		\texttt{meanA}& Media dell'accelerazione nell'intervallo.\\
+		\texttt{maxA}&Massimo dell'accelerazione nell'intervallo.\\
+		\texttt{intTrapz}&Integrale del segnale nell'intervallo, calcolato con l'approssimazione per trapezi \textbf{CIT}.\\
+		\texttt{MVDeriv}&Media della variazione assoluta della derivata nell'intervallo \textbf{CIT}.
+	\end{tabular}
+\end{table}
+\end{document}
