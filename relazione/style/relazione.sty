@@ -14,3 +14,29 @@
 \RequirePackage{booktabs} % prettier tables
 \RequirePackage{bm} % bold mathematical symbols
 \RequirePackage{subfiles}
+\RequirePackage{geometry}
+\addtolength{\textwidth}{1cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textheight}{4cm}
+\RequirePackage{siunitx}
+
+\RequirePackage{csquotes}
+\RequirePackage[
+	citestyle=numeric,
+	bibstyle=numeric,
+	maxcitenames=1,
+	%url=false,
+	isbn =false,
+	doi=false,
+	eprint=false,
+	backend=bibtex]
+	{biblatex}
+	
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor=black!50!black,
+	citecolor=blue!50!black,
+	urlcolor=blue!80!black
+}
