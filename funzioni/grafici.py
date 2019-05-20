@@ -3,6 +3,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+def grafico_importanza_variabili(importanze, variabili, max_num=None,
+        titolo="Importanza delle variabili"):
+    importanze = pd.Series(importanze, index=variabili).sort_values(
+        ascending=False)
+    importanze[:max_num].plot(kind="bar", grid=True, title=titolo,
+        color="tab:blue")
+
+
 def ScatterGroup(X, grp, palette="colorblind"):
     """
     Funzione che genera uno scatterplot di X, con i colori in base al gruppo di appartenenza,
