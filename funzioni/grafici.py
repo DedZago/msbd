@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from sklearn.metrics import confusion_matrix
 
 def grafico_importanza_variabili(importanze, variabili, max_num=None,
         titolo="Importanza delle variabili"):
@@ -48,3 +48,13 @@ def ScatterGroup(X, grp, palette="colorblind"):
         group.plot(ax=ax, kind='scatter', x=X.columns[0], y=X.columns[1],
                    label=key, color=color[key])
     return fig,ax
+
+def MatriceConfusione(y_true, y_pred, title="", col="Blues"):
+    ticks = y_true.unique()
+    ticks.sort()
+    g = sns.heatmap(confusion_matrix(y_true, y_pred), xticklabels=ticks, yticklabels=ticks,
+        cmap=col, annot=True, fmt="d")
+    #plt.xticks(np.arange(len(ticks)), ticks, rotation=90)
+    g.set_xticklabels(g.get_yticklabels(), rotation =90)
+    plt.title(title)
+    plt.show()
