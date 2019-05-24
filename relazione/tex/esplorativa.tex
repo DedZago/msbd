@@ -9,12 +9,20 @@ Per condurre una prima analisi esplorativa si sono considerati i grafici dell'ac
 	\caption{{}}
 	\label{espl}
 \end{figure}
-In generale, per le varie attività registrate si osserva che l'intensità dell'accelerazione e la frequenza dei picchi sono entrambe piuttosto basse per "camminata", "camminata tasca", "corsa" e "quotidiano". La differenza inizia ad emergere nello studio di "salti", "corsa tasca" e "shake".
-\\
+In generale, per le varie attività registrate si osserva che l'intensità dell'accelerazione e la frequenza dei picchi sono entrambe piuttosto basse per "camminata", "camminata tasca", "corsa" e "quotidiano". La differenza inizia ad emergere nello studio di "salti", "corsa tasca" e "shake".\\
 Emerge chiaramente come il segnale sia molto differente per queste tre diverse attività. In particolare si nota
-una differenza nell'intensità (più bassa per lo shake e maggiore negli altri due casi) e nella frequenza (la quale cresce passando da "cosa tasca" a "salti" fino a "shake"). Anche i picchi che vengono raggiunti sono diversi nei vari casi: nel primo si hanno picchi fino a $90\si{\metre\per\square\second}$ ma poco frequenti; nel secondo si notano picchi di intensità lievemente inferiore ma molto più ravvicinati. Infine lo shake evidenzia un segnale molto denso con  picchi piuttosto bassi rispetto ai precedenti. 
-\\
-
+una differenza nell'intensità (più bassa per lo shake e maggiore negli altri due casi) e nella frequenza (la quale cresce passando da "cosa tasca" a "salti" fino a "shake"). Anche i picchi che vengono raggiunti sono diversi nei vari casi: nel primo si hanno picchi fino a $90\si{\metre\per\square\second}$ ma poco frequenti; nel secondo si notano picchi di intensità lievemente inferiore ma molto più ravvicinati. Infine lo shake evidenzia un segnale molto denso con  picchi piuttosto bassi rispetto ai precedenti.\\
+Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, sui quali sono state calcolate le seguenti variabili riassuntive:
+\begin{table}[H]
+	\begin{tabular}{ll}
+%		\texttt{meanA}& Media dell'accelerazione.\\
+		\texttt{medianA}& Mediana dell'accelerazione.\\
+		\texttt{varA}& Varianza dell'accelerazione.\\
+		\texttt{maxA}& Massimo dell'accelerazione.\\
+		\texttt{intTrapz}& Integrale del segnale nell'intervallo, calcolato con l'approssimazione per trapezi \textbf{CIT}.\\
+		\texttt{MVDeriv}& Media della variazione assoluta della derivata \textbf{CIT}.
+	\end{tabular}
+\end{table}
 Successivamente sono stati sbiancati i dati e sono state applicate le seguenti tecniche d'analisi:
 \begin{itemize}
 	\item PCA sui dati sbiancati.
@@ -33,12 +41,4 @@ Si osserva in particolare come l'attività di interesse, ovvero lo shake, venga 
 Tale problema rappresenta il punto di partenza per un'analisi volta a classificare correttamente i vari segnali nelle diverse categorie.
 
 \textcolor{red}{EVENTUALE COMMENTO SULLE DISTRIBUZIONI DELLE ESPLICATIVE SCELTE}
-
-\section{Appendice}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.8\textwidth, keepaspectratio]{../../figure/PCA.png}
-	\caption{{ Prime due componenti principali per i dati sbiancati}}
-	\label{PCA}
-\end{figure}
 \end{document}

@@ -2,7 +2,7 @@
 
 \begin{document}
 \section{Introduzione}
-Nella seguente analisi si vuole affrontare un problema di classificazione di attività motorie, in base all'accelerazione a cui è sottoposto un cellulare. I dati sono stati raccolti tramite l'applicazione \texttt{PhonePi}\cite{kumar2019}.\\
+Nella seguente analisi si vuole affrontare un problema di classificazione di attività motorie, utilizzando dati sull'accelerazione a cui è sottoposto un cellulare. Le attività devono essere classificate con particolare attenzione nell'identificare correttamente quando il cellulare viene agitato volontariamente ({\em shake}) o meno. I dati sono stati raccolti sullo stesso cellulare da persone diverse, tramite l'applicazione \texttt{PhonePi}\cite{kumar2019}.\\
 Per le $j = 1, \ldots, $ \textbf{(scrivere quante)} attività, si dispongono di $n_j$ misurazioni a intervalli di ampiezza $\Delta t \approx \SI{10}{ms}$ della quantità
 $$
 \vec{a}_t = \begin{pmatrix}
@@ -12,13 +12,4 @@ a_{zt}
 \end{pmatrix}\,,
 $$
 accelerazione del cellulare rispetto agli assi cartesiani di riferimento dell'accelerometro. L'analisi è stata condotta sull'intensità dell'accelerazione $a_t = \|\vec{a}_t\|$, ignorando l'effetto di disturbo dell'accelerazione di gravità.\\
-Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{2}{s}, sui quali sono state calcolate le seguenti variabili riassuntive:
-\begin{table}[H]
-	\begin{tabular}{ll}
-		\texttt{meanA}& Media dell'accelerazione nell'intervallo.\\
-		\texttt{maxA}&Massimo dell'accelerazione nell'intervallo.\\
-		\texttt{intTrapz}&Integrale del segnale nell'intervallo, calcolato con l'approssimazione per trapezi \textbf{CIT}.\\
-		\texttt{MVDeriv}&Media della variazione assoluta della derivata nell'intervallo \textbf{CIT}.
-	\end{tabular}
-\end{table}
 \end{document}
