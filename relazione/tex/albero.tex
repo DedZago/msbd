@@ -2,39 +2,10 @@
 
 \begin{document}
 \section{Albero di classificazione}
-Per condurre una prima analisi esplorativa le tecniche d'analisi utilizzate sono state le seguenti:
-\begin{itemize}
-	\item PCA sui dati sbiancati.
-	\item ICA sui dati sbiancati.
-	\item t-SNE.
-	\item t-SNE sui dati sbiancati.
-\end{itemize}
-I risultati ottenuti:
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.99\textwidth, keepaspectratio]{../../figure/PCA.png}
-	\caption{{ Prime due componenti principali per i dati sbiancati}}
-	\label{PCA}
-\end{figure}
+Dopo aver suddiviso le variabili in insieme di stima e insieme di validazione, si è utilizzato il primo insieme per la crescita dell'albero. I dati sono stati suddivisi in modo tale da avere il 25$\%$ delle osservazioni nell'inisieme di validazione.
+L'albero è stato fatto crescere completamente utilizzando l'entropia come misura di impurità. L'algoritmo di potatura è stato eseguito sull'insieme di validazione utilizzando la devianza come funzione obiettivo da minimizzare. Dal grafico ?? si nota che la devianza minima è ottenuta con .... foglie.
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=.99\textwidth, keepaspectratio]{../../figure/ICA.png}
-%	\caption{{ Analisi esplorativa con ICA su dati sbiancati}}
-%	\label{ICA}
-%\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.99\textwidth, keepaspectratio]{../../figure/t-SNE.png}
-	\caption{{ t-SNE per i dati sbiancati}}
-	\label{tSNE}
-\end{figure}
-Al fine di riuscire a discriminare l'azione svolta, classificata in "camminata", "camminata tasca", "corsa", "corsa tasca", "quotidiano", e "shake", sono stati applicati i seguenti algoritmi di classificazione:
-\begin{itemize}
-	\item Regressione multinomiale.
-	\item Alberi di classificazione.
-\end{itemize}
+criterion=entropy
 
 
 \end{document}
