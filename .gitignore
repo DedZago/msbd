@@ -74,3 +74,4 @@ pythontex-files-*/
 # Kile
 *.backup
 analisi.ipynb
+.png
