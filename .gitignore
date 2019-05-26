@@ -28,6 +28,7 @@ README.txt
 *.cb2
 .*.lb
 
+
 ## Intermediate documents:
 *.dvi
 *.xdv
@@ -74,4 +75,5 @@ pythontex-files-*/
 # Kile
 *.backup
 analisi.ipynb
-.png
+!/presentazione/images/*.pdf
+!/presentazione/images/*.png
