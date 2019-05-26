@@ -40,10 +40,11 @@ head(y_train)
 head(x_train)
 
 t1 <- tree(dati_train$tipo~dati_train$intTrapz+dati_train$maxA+dati_train$MVDeriv+
-             dati_train$meanA+dati_train$Var+dati_train$Med)
+             dati_train$meanA+dati_train$Var+dati_train$Med, split="deviance")
 summary(t1)
 plot(t1)
 text(t1,pretty=0,cex=0.6,col="blue")
+temp = prune.tree(t1)
 
 set.seed(42)
 cv.hitters = cv.tree(t1 ,FUN=prune.tree )
@@ -52,11 +53,11 @@ plot(cv.hitters$size,cv.hitters$dev,type="b", lwd=3,col="blue")
 
 set.seed(42)
 t2 <- prune.tree(t1, newdata=dati_val[, c(2,4:9)])
-cv.hitters2 = cv.tree(t2 ,FUN=prune.tree )
+cv.hitters2 = cv.tree(t2, FUN=prune.tree )
 cv.hitters2
 plot(cv.hitters$size,cv.hitters$dev,type="b", lwd=3,col="blue")
 
-t2 <- prune.tree(t1,newdata=dati_val[, c(2,4:9)])
+t2 <- prune.tree(t1, size = 1,   newdata=dati_val)
 names(t2)
 t2$size
 t2$method
@@ -71,3 +72,14 @@ plot(t3)
 t3
 
 ?prune.tree
+
+
+data(fgl, package="MASS")
+fgl.tr <- tree(dati_train$tipo~dati_train$intTrapz+dati_train$maxA+dati_train$MVDeriv+
+                 dati_train$meanA+dati_train$Var+dati_train$Med, dati_train)
+plot(print(fgl.tr))
+fgl.cv <- cv.tree(fgl.tr,, prune.tree)
+for(i in 2:5)  fgl.cv$dev <- fgl.cv$dev +
+  cv.tree(fgl.tr,, prune.tree)$dev
+fgl.cv$dev <- fgl.cv$dev/5
+plot(fgl.cv)
