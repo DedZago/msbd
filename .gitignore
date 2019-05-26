@@ -77,3 +77,4 @@ pythontex-files-*/
 analisi.ipynb
 !/presentazione/images/*.pdf
 !/presentazione/images/*.png
+.directory
