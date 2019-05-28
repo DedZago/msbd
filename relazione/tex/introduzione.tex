@@ -2,8 +2,8 @@
 
 \begin{document}
 \section{Introduzione}
-Nella seguente analisi si vuole affrontare un problema di classificazione di attività motorie, utilizzando dati sull'accelerazione a cui è sottoposto un cellulare. Le attività devono essere classificate con particolare attenzione nell'identificare correttamente quando il cellulare viene agitato volontariamente ({\em shake}) o meno. I dati sono stati raccolti sullo stesso cellulare da persone diverse, tramite l'applicazione \texttt{PhonePi}\cite{kumar2019}.\\
-Per le $j = 1, \ldots, $ \textbf{(scrivere quante)} attività, si dispongono di $n_j$ misurazioni a intervalli di ampiezza $\Delta t \approx \SI{10}{ms}$ della quantità
+Nella seguente analisi si vuole affrontare un problema di classificazione di attività motorie, utilizzando dati sull'accelerazione a cui è sottoposto un cellulare. Le attività devono essere classificate, con una particolare attenzione nell'identificare correttamente quando il cellulare viene agitato volontariamente ({\em shake}) o meno. I dati sono stati raccolti sullo stesso cellulare, in campioni di circa $\SI{2}{\min}$ per attività, eseguita da più persone diverse. La rilevazione dei dati è stata effettuata tramite l'applicazione \texttt{PhonePi}~\cite{kumar2019}.\\
+Per le $j = 1, \ldots, $ \textbf{(scrivere quante)} attività, si dispongono di $n_j$ misurazioni a intervalli di ampiezza $\Delta t = \SI{10}{ms}$ della quantità
 $$
 \vec{a}_t = \begin{pmatrix}
 a_{xt}\\
@@ -11,5 +11,12 @@ a_{yt}\\
 a_{zt}
 \end{pmatrix}\,,
 $$
-accelerazione del cellulare rispetto agli assi cartesiani di riferimento dell'accelerometro. L'analisi è stata condotta sull'intensità dell'accelerazione $a_t = \|\vec{a}_t\|$, ignorando l'effetto di disturbo dell'accelerazione di gravità.\\
+accelerazione del cellulare rispetto agli assi cartesiani di riferimento dell'accelerometro. L'analisi è stata condotta sull'intensità dell'accelerazione $a_t = \|\vec{a}_t\|$, ignorando l'effetto di disturbo dell'accelerazione di gravità. Da ogni campione sono stati tolti i primi e gli ultimi sette secondi, considerando solo i dati per le attività ``a regime''.
+In Figura~\ref{fig:esempio} sono riportati dei grafici di esempio dei dati raccolti.
+\begin{figure}[H]
+	\label{fig:esempio}
+	\centering
+	\includegraphics[width=.8\textwidth, keepaspectratio]{../../figure/espl.png}
+	\caption{Misurazioni nell'intervallo $ [\SI{10}{\second}, \SI{30}{\second}] $ per le attività motorie di salita e discesa di scale, salti, shake, corsa con cellulare in tasca.}
+\end{figure}
 \end{document}
