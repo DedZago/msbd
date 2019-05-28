@@ -4,20 +4,19 @@ library(tree)
 set.seed(42)
 x <- read.csv("espl.csv", header=T)
 head(x)
-y <- read.csv("y-2s.csv", header=T)
+y <- read.csv("y-2s.csv", header=F)
 head(y)
 
 dati <- data.frame(cbind(y, x))
 head(dati)
 str(dati)
 
-ix <- sample(1:nrow(x), nrow(x)/2)
+ix <- sample(1:nrow(x), nrow(x)*0.75)
 x_train <- x[ix,]
 y_train <- y[ix,]
 x_val <- x[-ix,]
 y_val <- y[-ix,]
-x_val <- x_val[-1,]
-y_val <- y_val[-1,]
+
 
 dati_train <- dati[ix,]
 dati_val <- dati[-ix,]
@@ -83,3 +82,18 @@ for(i in 2:5)  fgl.cv$dev <- fgl.cv$dev +
   cv.tree(fgl.tr,, prune.tree)$dev
 fgl.cv$dev <- fgl.cv$dev/5
 plot(fgl.cv)
+
+
+
+head(y_train)
+
+library(rpart.plot)
+hr_base_model <- rpart(y_train$V2~x_train$maxA+x_train$MVDeriv+
+                         x_train$meanA+x_train$Var+x_train$Med, method = "class")
+summary(hr_base_model)
+#Plot Decision Tree
+plot(hr_base_model)
+# Examine the complexity plot
+printcp(hr_base_model)
+plotcp(hr_base_model)
+predict(hr_base_model, newdata=x_val)
