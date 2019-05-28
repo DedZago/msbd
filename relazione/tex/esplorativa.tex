@@ -15,30 +15,32 @@ una differenza nell'intensità (più bassa per lo shake e maggiore negli altri d
 Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, sui quali sono state calcolate le seguenti variabili riassuntive:
 \begin{table}[H]
 	\begin{tabular}{ll}
-%		\texttt{meanA}& Media dell'accelerazione.\\
-		\texttt{medianA}& Mediana dell'accelerazione.\\
+		\texttt{minA}& Minimo dell'accelerazione.\\
+		\texttt{medA}& Mediana dell'accelerazione.\\
 		\texttt{varA}& Varianza dell'accelerazione.\\
 		\texttt{maxA}& Massimo dell'accelerazione.\\
-		\texttt{intTrapz}& Integrale del segnale nell'intervallo, calcolato con l'approssimazione per trapezi \textbf{CIT}.\\
-		\texttt{MVDeriv}& Media della variazione assoluta della derivata \textbf{CIT}.
+		\texttt{meanA}& Media dell'accelerazione.\\
+		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda.
 	\end{tabular}
 \end{table}
-Successivamente sono stati sbiancati i dati e sono state applicate le seguenti tecniche d'analisi:
+La variabile \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata, quindi è stato ipotizzato che possa separare bene i segnali in base alle loro frequenze.\\
+Per valutare la separabilità delle classi, la migliore informazione è data dal t-SNE sui dati sbiancati:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\textwidth]{../../figure/t-SNE.png}
+	\caption{{ t-SNE per i dati sbiancati}}
+	\label{t-sne}
+\end{figure}
+
+Si osserva in particolare come l'attività di interesse, ovvero lo shake, venga principalmente confusa con "corsa" e "corsa tasca". 
+\\
+Tale problema rappresenta il punto di partenza per un'analisi volta a classificare correttamente i vari segnali nelle diverse categorie.
+
 \begin{itemize}
 	\item PCA sui dati sbiancati.
 	\item ICA sui dati sbiancati.
 	\item t-SNE sui dati sbiancati.
 \end{itemize}
 Le prime due componenti principali non riescono a isolare adeguatamente i vari segnali; l'analisi delle componenti indipendenti non migliora il risultato dal momento che quest'ultima rappresenta una rotazione della prima. Un output migliore lo si ottiene mediante il t-SNE (figura \ref{t-sne}). 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.8\textwidth, keepaspectratio]{../../figure/t-SNE.png}
-	\caption{{ t-SNE per i dati sbiancati}}
-	\label{t-sne}
-\end{figure}
-Si osserva in particolare come l'attività di interesse, ovvero lo shake, venga principalmente confusa con "corsa" e "corsa tasca". 
-\\
-Tale problema rappresenta il punto di partenza per un'analisi volta a classificare correttamente i vari segnali nelle diverse categorie.
-
 \textcolor{red}{EVENTUALE COMMENTO SULLE DISTRIBUZIONI DELLE ESPLICATIVE SCELTE}
 \end{document}
