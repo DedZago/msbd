@@ -3,21 +3,13 @@
 \begin{document}
 \section{Analisi discriminante}
 \subsection*{LDA}
-L\rq{}accuratezza raggiunta dall\rq{}analisi discriminante lineare nell\rq{}insieme di validazione è del $79.2\%$.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.6\textwidth, keepaspectratio]{../../figure/confusionMatrix-QDA.png}
-	\caption{{Matrice di confusione analisi discriminante lineare.}}
-	\label{fig:lda}
-\end{figure}
+L'accuratezza raggiunta dall'analisi discriminante lineare nell'insieme di convalida è del $79.2\%$.
+
 
 \subsection*{QDA}
-L\rq{}accuratezza raggiunta dall\rq{}analisi discriminante quadratica nell\rq{}insieme di validazione è del $93.0\%$. Nonostante le esplicative non 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.6\textwidth, keepaspectratio]{../../figure/confusionMatrix-QDA.png}
-	\caption{{Matrice di confusione analisi discriminante quadratica.}}
-	\label{fig:qda}
-\end{figure}
+L'accuratezza raggiunta dall'analisi discriminante quadratica nell'insieme di convalida è del $93.0\%$. Nonostante le esplicative non 
+
+
+Per penalizzare maggiormante l'errore di classificare altri movimenti come shake la stima della probabilità a priori viene modificata. Non si utilizza più la proporzione campionaria ma una combinazione di pesi trovati nell'insieme di validazione in modo da  massimizzare l'accuratezza minimizzando l'errore di classificazione.
 
 \end{document}
