@@ -52,7 +52,7 @@ def ScatterGroup(X, grp, palette="colorblind"):
 def MatriceConfusione(y_true, y_pred, nome_immagine="" ,title="", col="Blues"):
     ticks = y_true.unique()
     ticks.sort()
-    g = sns.heatmap(confusion_matrix(y_true, y_pred), xticklabels=ticks, yticklabels=ticks,
+    g = sns.heatmap(confusion_matrix(y_true, y_pred, labels=ticks), xticklabels=ticks, yticklabels=ticks,
         cmap=col, annot=True, fmt="d")
     #plt.xticks(np.arange(len(ticks)), ticks, rotation=90)
     g.set_xticklabels(g.get_yticklabels(), rotation =90)
