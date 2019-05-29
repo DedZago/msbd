@@ -83,8 +83,6 @@ for(i in 2:5)  fgl.cv$dev <- fgl.cv$dev +
 fgl.cv$dev <- fgl.cv$dev/5
 plot(fgl.cv)
 
-
-
 head(y_train)
 
 library(rpart.plot)
@@ -97,3 +95,150 @@ plot(hr_base_model)
 printcp(hr_base_model)
 plotcp(hr_base_model)
 predict(hr_base_model, newdata=x_val)
+
+
+##########################################################
+x <- read.csv("espl.csv", header=T)
+head(x)
+x <- x[,2:7]
+y <- read.csv("y-2s.csv", header=F)
+head(y)
+y <- y[,2]
+
+dati <- cbind(y, x)
+dati <- dati[-1,]
+head(dati)
+dim(dati)
+length(dati$maxA)
+
+library(tree)
+set.seed(123)
+parte1=sample(1:NROW(dati),NROW(dati)/2) #divido in 2 parti a meta'
+parte2=setdiff(1:NROW(dati),parte1)
+#crescita fino le foglie
+
+
+#f1 funzione con risp qualitativa
+t1a=tree(dati[parte1,]$y~dati[parte1,]$maxA+dati[parte1,]$MVDeriv+dati[parte1,]$meanA
+         +dati[parte1,]$Var+dati[parte1,]$Med+dati[parte1,]$Min,data=dati[parte1,],control=tree.control(nobs=length(parte1),minsize = 2,mindev = 0.001))#crescita con entropia
+#se fosse stato f0 avrebbe usato la devianza per la crescita
+#control=tree.control(nobs=length(cb1) crescita fino alle foglie
+#minsize minima di crescita dei rami
+plot(t1a)
+text(t1a,cex=0.5)#cex=0.5 grandezza caratteri
+
+#potatura considerando l'insieme di verifica
+t2a=prune.tree(t1a,newdata = dati[parte2,])
+plot(t2a) #funz di devianza per far crescere l'albero ho usato l'entropia e l'indice di gini 
+#ho usato l'entropia perche' e' di default dato che e' la devianza della binomiale
+
+#se avessi messo la risp qnt avrebbe preso di default la gaussiana
+
+
+#prima cala poi cresce, c'e' un punto di minimo j
+J=t2a$size[which.min(t2a$dev)]
+J #corrisponde a 6 nodi terminali 
+#foglie migliore 
+str(t2a)
+t2a
+
+
+t3a=prune.tree(t1a,best = J)
+plot(t3a)
+text(t3a,cex=0.75)
+#sulla parte destra l'albero ha due foglie con la stessa classe dato che da 1 1 come risultati
+#perche?
+#hanno probabilita' diverse, anche se entrambe >0.5
+#se sei giovane e usi metodo pagamento a con chiamate <29 min e + probabile che sei giovane?????? (registrazione)
+plot(t3a)
+text(t3a,pretty=1)
+
+plot(t3a)
+text(t3a,pretty=0) #con lo 0 mi dice esplicitatamente il metodo di pagamento per intero
+
+
+p8=predict(t3a,newdata=tele.v,type="class") #previsione della classe
+et8=tabella.sommario(p8,tele.v$status)
+
+
+#non voglio la classe ma la probabilita' quindi type="vector
+p8a=predict(t3a, newdata=tele.v,type="vector")[,2]
+a8=lift.roc(p8a,g,type="crue")
+#non e' crescente perche' il nostro modello e' stimato non su casi specifici
+
+
+##########################################################
+x <- read.csv("espl.csv", header=T)
+head(x)
+x <- x[,2:7]
+y <- read.csv("y-2s.csv", header=F)
+head(y)
+y <- y[,2]
+
+yy <- rep(0, length(y))
+yy[y=="shake"] <- 1
+table(yy)
+
+dati <- cbind(yy, x)
+dati <- dati[-1,]
+head(dati)
+dim(dati)
+length(dati$maxA)
+
+library(tree)
+set.seed(123)
+parte1=sample(1:NROW(dati),NROW(dati)/2) #divido in 2 parti a meta'
+parte2=setdiff(1:NROW(dati),parte1)
+#crescita fino le foglie
+
+head(dati)
+#f1 funzione con risp qualitativa
+t1a=tree(dati[parte1,]$y~dati[parte1,]$maxA+dati[parte1,]$MVDeriv+dati[parte1,]$meanA
+         +dati[parte1,]$Var+dati[parte1,]$Med+dati[parte1,]$Min,
+         data=dati[parte1,],control=tree.control(nobs=length(parte1),minsize = 2,mindev = 0.001))#crescita con entropia
+#se fosse stato f0 avrebbe usato la devianza per la crescita
+#control=tree.control(nobs=length(cb1) crescita fino alle foglie
+#minsize minima di crescita dei rami
+plot(t1a)
+text(t1a,cex=0.5)#cex=0.5 grandezza caratteri
+
+#potatura considerando l'insieme di verifica
+t2a=prune.tree(t1a,newdata = dati[parte2,])
+plot(t2a) #funz di devianza per far crescere l'albero ho usato l'entropia e l'indice di gini 
+#ho usato l'entropia perche' e' di default dato che e' la devianza della binomiale
+
+#se avessi messo la risp qnt avrebbe preso di default la gaussiana
+
+
+#prima cala poi cresce, c'e' un punto di minimo j
+J=t2a$size[which.min(t2a$dev)]
+J #corrisponde a 6 nodi terminali 
+#foglie migliore 
+str(t2a)
+
+
+
+t3a=prune.tree(t1a,best = J)
+plot(t3a)
+text(t3a,cex=0.75)
+#sulla parte destra l'albero ha due foglie con la stessa classe dato che da 1 1 come risultati
+#perche?
+#hanno probabilita' diverse, anche se entrambe >0.5
+#se sei giovane e usi metodo pagamento a con chiamate <29 min e + probabile che sei giovane?????? (registrazione)
+plot(t3a)
+text(t3a,pretty=1)
+
+plot(t3a)
+text(t3a,pretty=0) #con lo 0 mi dice esplicitatamente il metodo di pagamento per intero
+
+
+p8=predict(t3a,newdata=tele.v,type="class") #previsione della classe
+et8=tabella.sommario(p8,tele.v$status)
+
+
+#non voglio la classe ma la probabilita' quindi type="vector
+p8a=predict(t3a, newdata=tele.v,type="vector")[,2]
+a8=lift.roc(p8a,g,type="crue")
+#non e' crescente perche' il nostro modello e' stimato non su casi specifici
+
+
