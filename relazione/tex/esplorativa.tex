@@ -2,39 +2,36 @@
 
 \begin{document}
 \section{Preprocessamento ed analisi esplorativa}
-Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, sui quali sono state calcolate le seguenti variabili riassuntive:
- Per condurre una prima analisi esplorativa si sono considerati i grafici dell'accelerazione rispetto al tempo per le diverse attività registrate; 
-In generale, per le varie attività registrate si osserva che l'intensità dell'accelerazione e la frequenza dei picchi sono entrambe piuttosto basse per "camminata", "camminata tasca", "corsa" e "quotidiano". La differenza inizia ad emergere nello studio di "salti", "corsa tasca" e "shake".\\
-Emerge chiaramente come il segnale sia molto differente per queste tre diverse attività. In particolare si nota
-una differenza nell'intensità (più bassa per lo shake e maggiore negli altri due casi) e nella frequenza (la quale cresce passando da "cosa tasca" a "salti" fino a "shake"). Anche i picchi che vengono raggiunti sono diversi nei vari casi: nel primo si hanno picchi fino a $90\si{\metre\per\square\second}$ ma poco frequenti; nel secondo si notano picchi di intensità lievemente inferiore ma molto più ravvicinati. Infine lo shake evidenzia un segnale molto denso con  picchi piuttosto bassi rispetto ai precedenti.\\
+Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, che sono stati utilizzati come unità statistiche. Dal momento che ciascuna unità è una serie storica, è stato necessario riassumerle con delle variabili:
 \begin{table}[H]
+	\centering
 	\begin{tabular}{ll}
 		\texttt{minA}& Minimo dell'accelerazione.\\
 		\texttt{medA}& Mediana dell'accelerazione.\\
 		\texttt{varA}& Varianza dell'accelerazione.\\
 		\texttt{maxA}& Massimo dell'accelerazione.\\
 		\texttt{meanA}& Media dell'accelerazione.\\
-		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda.
+		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda .
 	\end{tabular}
 \end{table}
-La variabile \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata, quindi è stato ipotizzato che possa separare bene i segnali in base alle loro frequenze.\\
-Per valutare la separabilità delle classi, la migliore informazione è data dal t-SNE sui dati sbiancati:
+Siccome i segnali di {\em shake} sono ad alta frequenza, è stata utilizzata la variabile \texttt{MVDeriv} per discriminare le alte frequenze dalle basse frequenze. Infatti, \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata nell'intervallo, cioé quando la frequenza è alta. La derivata nell'intervallo è stata calcolata con l'approssimazione\cite{numpy_gradient}
+\[
+\hat{f}'(t_i) = \dfrac{f(t + \Delta t) - f(t - \Delta t)}{2\Delta t} + \mathcal{O}(h^2)\,.
+\]
+
+Come prima analisi esplorativa, sono state valutate le distribuzioni delle variabili riassuntive per le varie classi (Figura~\ref{fig:marginali}). \textbf{Scrivere differenze\dots}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=.8\textwidth]{mettere/grafici/delle/esplicative}
+%	\caption{{ t-SNE per i dati sbiancati}}
+%	\label{fig:marginali}
+%\end{figure}
+
+Per valutare graficamente la separabilità delle classi, l'informazione migliore è data dal t-SNE sui dati sbiancati (Figura~\ref{fig:tsne}). Le componenti principali non riescono a separare le classi in modo soddisfacente (Appendice\ref{appendice}).
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.8\textwidth]{../../figure/t-SNE.png}
 	\caption{{ t-SNE per i dati sbiancati}}
-	\label{t-sne}
+	\label{fig:tsne}
 \end{figure}
-
-Si osserva in particolare come l'attività di interesse, ovvero lo shake, venga principalmente confusa con "corsa" e "corsa tasca". 
-\\
-Tale problema rappresenta il punto di partenza per un'analisi volta a classificare correttamente i vari segnali nelle diverse categorie.
-
-\begin{itemize}
-	\item PCA sui dati sbiancati.
-	\item ICA sui dati sbiancati.
-	\item t-SNE sui dati sbiancati.
-\end{itemize}
-Le prime due componenti principali non riescono a isolare adeguatamente i vari segnali; l'analisi delle componenti indipendenti non migliora il risultato dal momento che quest'ultima rappresenta una rotazione della prima. Un output migliore lo si ottiene mediante il t-SNE (figura \ref{t-sne}). 
-\textcolor{red}{EVENTUALE COMMENTO SULLE DISTRIBUZIONI DELLE ESPLICATIVE SCELTE}
 \end{document}
