@@ -11,7 +11,98 @@
 \titlepage
 \end{frame}
 
-\input{introduzione}
+\section{Introduzione}
+\begin{frame}{Il problema analizzato}
+Ormai con il cellulare è possibile fare moltissime cose. 
+Cancellare messaggi, avere più giga...è tutto possibile con un solo shake.\\
+\smallskip
+Ma come possiamo riconoscere uno shake?
+\begin{figure}[H]
+\includegraphics[width=0.4\textwidth]{./images/vodafoneshake.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{La nostra idea}
+Riconoscere uno shake tra diverse attività motorie.\\
+\smallskip
+\begin{columns}[T] % align columns
+\begin{column}{.48\textwidth}
+Le attività analizzate sono:
+\begin{itemize}
+\item Camminata;
+\item Camminata tasca;
+\item Corsa;
+\item Corsa tasca;
+\item Utilizzo a riposo;
+\item Salti;
+\item Salita e discesa di scale.
+\end{itemize}
+\end{column}%
+\hfill%
+\begin{column}{.4\textwidth}
+\begin{figure}[H]
+\includegraphics[width=0.6\textwidth]{./images/attivit.jpg}
+\end{figure}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Raccolta dati}
+I dati sono stati raccolti tramite l'applicazione \cite{kumarPhonePiSampleServer2019}.\\
+\smallskip
+Questa fornisce l'accelerazione in forma vettoriale ad ogni istante $t$.
+\[
+\vec{a_t} = \begin{pmatrix}
+a_x \\ a_y \\ a_z
+\end{pmatrix}
+\]
+\end{frame}
+
+\begin{frame}{Accelerazione}
+L'accelerazione viene calcolata come $a_t =\sqrt{a_x^2+a_y^2+a_z^2}$.
+\begin{table}[H]
+\begin{tabular}{cccccccc}
+\toprule
+y & $a_0$ & $a_1$ & $a_2$  & $\dots$ & $a_{149}$\\
+\midrule
+camminata & 5.449 & 5.300 & 5.344 &  $\dots$ & 13.147\\
+
+camminata & 13.977 & 14.910 & 15.567 &  $\dots$ & 5.480\\
+
+camminata & 5.608 & 5.868 & 6.143 &  $\dots$ & 18.227\\
+
+camminata & 19.026 & 18.886 & 18.098 &  $\dots$ & 6.299\\
+
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &  $\ddots$ & $\vdots$\\
+
+shake & 11.480 & 14.663 & 16.968 &  $\dots$ & 8.474\\
+
+\bottomrule
+\end{tabular}
+\end{table}
+Ma cosa rappresenta questa tabella?
+\end{frame}
+
+\section{Esplorative}
+\begin{frame}
+grafici
+\end{frame}
+
+
+\begin{frame}
+
+\begin{columns}[T] % align columns
+\begin{column}{.48\textwidth}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/ICA.png}
+\end{figure}
+\end{column}%
+\hfill%
+\begin{column}{.48\textwidth}
+$f(x)=x^2$
+\end{column}%
+\end{columns}
+\end{frame}
 %\input{tex/esplorativa}
 %\input{tex/...}
 
