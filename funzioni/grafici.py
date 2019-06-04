@@ -59,3 +59,17 @@ def MatriceConfusione(y_true, y_pred, nome_immagine="" ,title="", col="Blues"):
     plt.title(title)
     plt.savefig(nome_immagine,dpi=150)
     plt.show()
+
+def DistGroup(X, grp, palette="colorblind", leg_loc=(1,0.8)):
+    if palette not in ["deep", "muted", "bright", "pastel", "dark", "colorblind"]:
+        raise KeyError
+    grp_dist = grp.unique()
+    pal = sns.color_palette(palette)
+    color = [pal[i] for i in range(len(grp_dist))]
+
+    for i in range(len(grp_dist)):
+        sns.distplot(X[grp==grp_dist[i]], color = color[i],
+            hist=False, label=grp_dist[i])
+
+    plt.legend(bbox_to_anchor=leg_loc)    
+    plt.show()
