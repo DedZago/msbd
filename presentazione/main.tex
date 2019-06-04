@@ -29,13 +29,13 @@ Riconoscere uno shake tra diverse attività motorie.\\
 \begin{column}{.48\textwidth}
 Le attività analizzate sono:
 \begin{itemize}
-\item Camminata;
-\item Camminata tasca;
-\item Corsa;
-\item Corsa tasca;
-\item Utilizzo a riposo;
-\item Salti;
-\item Salita e discesa di scale.
+\item Camminata
+\item Camminata con cellulare in tasca
+\item Corsa
+\item Corsa con cellulare in tasca
+\item Utilizzo a riposo
+\item Salti
+\item Salita e discesa di scale
 \end{itemize}
 \end{column}%
 \hfill%
@@ -59,33 +59,30 @@ a_x \\ a_y \\ a_z
 \end{frame}
 
 \begin{frame}{Accelerazione}
-L'accelerazione viene calcolata come $a_t =\sqrt{a_x^2+a_y^2+a_z^2}$.
+L'accelerazione viene calcolata come $\|\vec{a_t}\| =\sqrt{a_x^2+a_y^2+a_z^2}$.
 \begin{table}[H]
 \begin{tabular}{cccccccc}
 \toprule
-y & $a_0$ & $a_1$ & $a_2$  & $\dots$ & $a_{149}$\\
+y & $\|\vec{a}_0\|$ & $\|\vec{a}_1\|$ & $\|\vec{a}_2\|$  & $\dots$ & $\|\vec{a}_{149}\|$\\
 \midrule
-camminata & 5.449 & 5.300 & 5.344 &  $\dots$ & 13.147\\
-
-camminata & 13.977 & 14.910 & 15.567 &  $\dots$ & 5.480\\
-
-camminata & 5.608 & 5.868 & 6.143 &  $\dots$ & 18.227\\
-
-camminata & 19.026 & 18.886 & 18.098 &  $\dots$ & 6.299\\
-
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &  $\ddots$ & $\vdots$\\
-
-shake & 11.480 & 14.663 & 16.968 &  $\dots$ & 8.474\\
+camminata & 5.449 & 5.300 & 5.344 &  $\cdots$ & 13.147\\
+camminata & 13.977 & 14.910 & 15.567 &  $\cdots$ & 5.480\\
+camminata & 5.608 & 5.868 & 6.143 &  $\cdots$ & 18.227\\
+camminata & 19.026 & 18.886 & 18.098 &  $\cdots$ & 6.299\\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &  $\cdots$ & $\vdots$\\
+shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 
 \bottomrule
 \end{tabular}
 \end{table}
-Ma cosa rappresenta questa tabella?
+Perché non lavorare direttamente con le esplicative $a_0,\dots,a_{149}$?
 \end{frame}
 
 \section{Esplorative}
 \begin{frame}
-grafici
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/espl.png}
+\end{figure}
 \end{frame}
 
 
