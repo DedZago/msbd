@@ -6,6 +6,8 @@
 \author{Galtarossa Luisa\and Grassi Alberto\and Montin Anna\and Zago Daniele}
 \date{}
 
+\newcommand{\getsection}{\color{white}\insertsection}
+
 \begin{document}
 \begin{frame}
 \titlepage
@@ -14,7 +16,7 @@
 \section{Introduzione}
 \begin{frame}{Il problema analizzato}
 Ormai con il cellulare è possibile fare moltissime cose. 
-Cancellare messaggi, avere più giga...è tutto possibile con un solo shake.\\
+Cancellare messaggi, avere più giga\dots È tutto possibile con un solo shake.\\
 \smallskip
 Ma come possiamo riconoscere uno shake?
 \begin{figure}[H]
@@ -48,12 +50,12 @@ Le attività analizzate sono:
 \end{frame}
 
 \begin{frame}{Raccolta dati}
-I dati sono stati raccolti tramite l'applicazione \cite{kumarPhonePiSampleServer2019}.\\
+I dati sono stati raccolti tramite l'applicazione \texttt{PhonePi} \cite{kumarPhonePiSampleServer2019}.\\
 \smallskip
 Questa fornisce l'accelerazione in forma vettoriale ad ogni istante $t$.
 \[
-\vec{a_t} = \begin{pmatrix}
-a_x \\ a_y \\ a_z
+\vec{a}_t = \begin{pmatrix}
+a_{xt} \\ a_{yt} \\ a_{zt}
 \end{pmatrix}
 \]
 \end{frame}
@@ -75,7 +77,7 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 \bottomrule
 \end{tabular}
 \end{table}
-Perché non lavorare direttamente con le esplicative $a_0,\dots,a_{149}$?
+Perché non lavorare direttamente con le esplicative $\|\vec{a}_0\|,\dots,\|\vec{a}_{149}\|$?
 \end{frame}
 
 \section{Esplorative}
@@ -85,7 +87,8 @@ Perché non lavorare direttamente con le esplicative $a_0,\dots,a_{149}$?
 \end{figure}
 \end{frame}
 
-
+\section{Bibliografia}
+\begin{frame}{Bibliografia}
 \printbibliography
-
+\end{frame}
 \end{document}
