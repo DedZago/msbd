@@ -17,3 +17,24 @@
 
 \renewcommand\rmdefault{cmss} % sans serif text
 \renewcommand\mathfamilydefault{cmr} % computer modern in math mode
+
+\RequirePackage{csquotes}
+\RequirePackage[
+	citestyle=numeric,
+	bibstyle=numeric,
+	maxcitenames=1,
+	%url=false,
+	isbn =false,
+	doi=false,
+	eprint=false,
+	backend=bibtex]
+	{biblatex}
+	
+\RequirePackage{hyperref}
+\RequirePackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor=black!50!black,
+	citecolor=blue!50!black,
+	urlcolor=blue!80!black
+}

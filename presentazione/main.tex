@@ -1,7 +1,7 @@
 \documentclass{beamer}
-\usetheme{Padova}
+\usetheme[compress]{Padova}
 \usepackage{presentazione}
-
+\addbibresource{msbd.bib}
 \title{\textsc{Classificazione di attività motorie tramite accelerometro del cellulare}}
 \author{Galtarossa Luisa\and Grassi Alberto\and Montin Anna\and Zago Daniele}
 \date{}
@@ -59,7 +59,7 @@ a_x \\ a_y \\ a_z
 \end{frame}
 
 \begin{frame}{Accelerazione}
-L'accelerazione viene calcolata come $\|\vec{a_t}\| =\sqrt{a_x^2+a_y^2+a_z^2}$.
+L'accelerazione viene calcolata come $\|\vec{a_t}\| =\sqrt{a_{xt}^2+a_{yt}^2+a_{zt}^2}$.
 \begin{table}[H]
 \begin{tabular}{cccccccc}
 \toprule
@@ -69,7 +69,7 @@ camminata & 5.449 & 5.300 & 5.344 &  $\cdots$ & 13.147\\
 camminata & 13.977 & 14.910 & 15.567 &  $\cdots$ & 5.480\\
 camminata & 5.608 & 5.868 & 6.143 &  $\cdots$ & 18.227\\
 camminata & 19.026 & 18.886 & 18.098 &  $\cdots$ & 6.299\\
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &  $\cdots$ & $\vdots$\\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &  $\vdots$ & $\vdots$\\
 shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 
 \bottomrule
@@ -86,23 +86,6 @@ Perché non lavorare direttamente con le esplicative $a_0,\dots,a_{149}$?
 \end{frame}
 
 
-\begin{frame}
-
-\begin{columns}[T] % align columns
-\begin{column}{.48\textwidth}
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{../figure/ICA.png}
-\end{figure}
-\end{column}%
-\hfill%
-\begin{column}{.48\textwidth}
-$f(x)=x^2$
-\end{column}%
-\end{columns}
-\end{frame}
-%\input{tex/esplorativa}
-%\input{tex/...}
-
-%\printbibliography
+\printbibliography
 
 \end{document}
