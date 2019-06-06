@@ -1,6 +1,8 @@
 \documentclass{beamer}
 \usetheme[compress]{Padova}
 \usepackage{presentazione}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
 \addbibresource{msbd.bib}
 \title{\textsc{Classificazione di attività motorie tramite accelerometro del cellulare}}
 \author{Galtarossa Luisa\and Grassi Alberto\and Montin Anna\and Zago Daniele}
@@ -18,7 +20,7 @@
 Ormai con il cellulare è possibile fare moltissime cose. 
 Cancellare messaggi, avere più giga\dots È tutto possibile con un solo shake.\\
 \smallskip
-Ma come possiamo riconoscere uno shake?
+Ma come si può riconoscere uno shake?
 \begin{figure}[H]
 \includegraphics[width=0.4\textwidth]{./images/vodafoneshake.png}
 \end{figure}
@@ -62,6 +64,14 @@ a_{xt} \\ a_{yt} \\ a_{zt}
 
 \begin{frame}{Accelerazione}
 L'accelerazione viene calcolata come $\|\vec{a_t}\| =\sqrt{a_{xt}^2+a_{yt}^2+a_{zt}^2}$.
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/espl.png}
+\end{figure}
+\end{frame}
+
+\section{Esplorativa}
+\begin{frame}{Accelerazione}
+I dati sono stati suddivisi in intervalli di ampiezza $\SI{1.5}{s}$
 \begin{table}[H]
 \begin{tabular}{cccccccc}
 \toprule
@@ -73,18 +83,34 @@ camminata & 5.608 & 5.868 & 6.143 &  $\cdots$ & 18.227\\
 camminata & 19.026 & 18.886 & 18.098 &  $\cdots$ & 6.299\\
 $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &  $\vdots$ & $\vdots$\\
 shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
-
 \bottomrule
 \end{tabular}
 \end{table}
-Perché non lavorare direttamente con le esplicative $\|\vec{a}_0\|,\dots,\|\vec{a}_{149}\|$?
+\pause Perché non lavorare direttamente con le esplicative $\|\vec{a}_0\|,\dots,\|\vec{a}_{149}\|$?
 \end{frame}
 
-\section{Esplorative}
-\begin{frame}
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{../figure/espl.png}
-\end{figure}
+\begin{frame}{Accelerazione}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+		\node[text width=3.5cm, align=center, rectangle] (a) at (-2.5,0){I segnali non sono periodici di periodo $T = \SI{1.5}{s}$};
+		\node[text width=3.5cm, align=center, rectangle] (b) at (2.5,0){Le variabili $\|\vec{a}_j\|$ non sono osservazioni della stessa quantità.};
+		\draw[->, double] (a) -- (b);
+		\end{tikzpicture}
+	\end{figure}
+\pause
+\textbf{Soluzione}: variabili riassuntive dell'intervallo:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\texttt{minA}& Minimo dell'accelerazione.\\
+		\texttt{medA}& Mediana dell'accelerazione.\\
+		\texttt{varA}& Varianza dell'accelerazione.\\
+		\texttt{maxA}& Massimo dell'accelerazione.\\
+		\texttt{meanA}& Media dell'accelerazione.\\
+		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda.
+	\end{tabular}
+\end{table}
 \end{frame}
 
 \section{Bibliografia}
