@@ -57,7 +57,7 @@ def MatriceConfusione(y_true, y_pred, nome_immagine="" ,title="", col="Blues"):
     #plt.xticks(np.arange(len(ticks)), ticks, rotation=90)
     g.set_xticklabels(g.get_yticklabels(), rotation =90)
     plt.title(title)
-    plt.savefig(nome_immagine,dpi=150)
+    plt.savefig(nome_immagine,dpi=150, bbox_inches="tight")
     plt.show()
 
 def DistGroup(X, grp, palette="colorblind", leg_loc=(1,0.8)):

@@ -11,7 +11,7 @@ dati <- data.frame(cbind(y, x))
 head(dati)
 str(dati)
 
-ix <- sample(1:nrow(x), nrow(x)*0.75)
+ix <- sample(1:nrow(x), nrow(x)*0.5)
 x_train <- x[ix,]
 y_train <- y[ix,]
 x_val <- x[-ix,]
@@ -38,8 +38,8 @@ str(x_train)
 head(y_train)
 head(x_train)
 
-t1 <- tree(dati_train$tipo~dati_train$intTrapz+dati_train$maxA+dati_train$MVDeriv+
-             dati_train$meanA+dati_train$Var+dati_train$Med, split="deviance")
+t1 <- tree(dati_train$V1~dati_train$maxA+dati_train$MVDeriv+dati_train$meanA+
+             dati_train$varA+dati_train$medA+dati_train$minA, split="deviance")
 summary(t1)
 plot(t1)
 text(t1,pretty=0,cex=0.6,col="blue")
@@ -116,11 +116,11 @@ set.seed(123)
 parte1=sample(1:NROW(dati),NROW(dati)/2) #divido in 2 parti a meta'
 parte2=setdiff(1:NROW(dati),parte1)
 #crescita fino le foglie
-
+head(dati[parte1,])
 
 #f1 funzione con risp qualitativa
 t1a=tree(dati[parte1,]$y~dati[parte1,]$maxA+dati[parte1,]$MVDeriv+dati[parte1,]$meanA
-         +dati[parte1,]$Var+dati[parte1,]$Med+dati[parte1,]$Min,data=dati[parte1,],control=tree.control(nobs=length(parte1),minsize = 2,mindev = 0.001))#crescita con entropia
+         +dati[parte1,]$varA+dati[parte1,]$medA+dati[parte1,]$minA,data=dati[parte1,],control=tree.control(nobs=length(parte1),minsize = 2, mincat = 1, mindev = 0))#crescita con entropia
 #se fosse stato f0 avrebbe usato la devianza per la crescita
 #control=tree.control(nobs=length(cb1) crescita fino alle foglie
 #minsize minima di crescita dei rami
@@ -157,7 +157,7 @@ plot(t3a)
 text(t3a,pretty=0) #con lo 0 mi dice esplicitatamente il metodo di pagamento per intero
 
 
-p8=predict(t3a,newdata=tele.v,type="class") #previsione della classe
+p8=predict(t3a,newdata="camminata",type="class") #previsione della classe
 et8=tabella.sommario(p8,tele.v$status)
 
 
