@@ -3,24 +3,24 @@
 \begin{document}
 \section{Modelli di classificazione}
 I modelli che sono stati utilizzati per classificare sono l'analisi discriminante lineare e quadratica, il modello multinomiale e l'albero di classificazione.
-\\
+
 Nella seguente tabella vengono riportate le percentuali di accuratezza raggiunte dalla classificazione effettuata da ogni modello nell'insieme di convalida.
 \input{accuracy-table.tex}
 
-La classificazione migliore è ottenuta con l'analisi discriminante quadratica. L'importanza delle variabili esplicative è riassunta nella Figura~\ref{fig:importance-Tree}.
+La classificazione migliore è ottenuta con il modello multinomiale. L'importanza delle variabili esplicative è riassunta nella Figura~\ref{fig:importance-Tree}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\textwidth]{../../figure/importance-Tree.png}
+	\includegraphics[width=.5\textwidth]{../../figure/importance-Tree.png}
 	\caption{Importanza delle variabili ottenuta con l'albero di classificazione.}
 	\label{fig:importance-Tree}
 \end{figure}
 Tale risultato è stato ottenuto dall'analisi condotta con l'albero di classificazione.
-\\
+
 La matrice di confusione per il modello migliore è la seguente.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.8\textwidth]{../../figure/confusionMatrix-QDA.png}
-	\caption{Matrice di confusione ottenuta con l'analisi discriminante quadratica.}
-	\label{fig:qda}
+	\includegraphics[width=.5\textwidth]{../../figure/confusionMatrix-Mn.png}
+	\caption{Matrice di confusione ottenuta con il modello multinomiale.}
+	\label{fig:mn}
 \end{figure}
 \end{document}
