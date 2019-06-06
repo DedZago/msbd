@@ -7,7 +7,6 @@
 \title{\textsc{Classificazione di attività motorie tramite accelerometro del cellulare}}
 \author{Luisa Galtarossa\and Alberto Grassi\and Anna Montin\and Daniele Zago}
 \date{}
-
 \newcommand{\getsection}{\color{white}\insertsection}
 
 \begin{document}
@@ -40,6 +39,7 @@ Le attività analizzate sono:
 \item Utilizzo a riposo
 \item Salti
 \item Salita e discesa di scale
+\item Shake
 \end{itemize}
 \end{column}%
 \hfill%
@@ -54,21 +54,25 @@ Le attività analizzate sono:
 \begin{frame}{Raccolta dati}
 I dati sono stati raccolti tramite l'applicazione \texttt{PhonePi} \cite{kumarPhonePiSampleServer2019}.\\
 \smallskip
-Questa fornisce l'accelerazione in forma vettoriale ad ogni istante $t$.
-\[
-\vec{a}_t = \begin{pmatrix}
-a_{xt} \\ a_{yt} \\ a_{zt}
-\end{pmatrix}
-\]
+Questa fornisce l'accelerazione $\vec{a}_t = \begin{pmatrix}a_{xt} \\ a_{yt} \\ a_{zt}\end{pmatrix}$ ad intervalli di $\SI{10}{ms}$.
+\pause
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{../figure/esempio-accel.png}
+\includegraphics[width=0.85\textwidth]{../figure/esempio-accel.png}
 \end{figure}
 \end{frame}
 
 \begin{frame}{Accelerazione}
-L'accelerazione viene calcolata come $\|\vec{a_t}\| =\sqrt{a_{xt}^2+a_{yt}^2+a_{zt}^2}$.
+Il sistema di riferimento dell'accelerometro è rotante, quindi $\vec{a}_t$ è difficile da trattare.
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{../figure/espl.png}
+\includegraphics[width=0.6\textwidth]{../figure/sensor_coordinate_system.png}
+\end{figure}
+
+\end{frame}
+\begin{frame}{Accelerazione}
+Lavoriamo sul modulo dell'accelerazione $\|\vec{a_t}\| =\sqrt{a_{xt}^2+a_{yt}^2+a_{zt}^2}$.
+\pause
+\begin{figure}[H]
+\includegraphics[width=0.85\textwidth]{../figure/espl.png}
 \end{figure}
 \end{frame}
 
@@ -96,13 +100,13 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-		\node[text width=3.5cm, align=center, rectangle] (a) at (-2.5,0){I segnali non sono periodici di periodo $T = \SI{1.5}{s}$};
-		\node[text width=3.5cm, align=center, rectangle] (b) at (2.5,0){Le variabili $\|\vec{a}_j\|$ non sono osservazioni della stessa quantità.};
-		\draw[->, double] (a) -- (b);
+		\node[text width=3.2cm, align=left, rectangle] (a) at (-2.5,0){I segnali non sono periodici di periodo $T = \SI{1.5}{s}$};
+		\node[text width=3.5cm, align=left	, rectangle] (b) at (2.5,0){Le esplicative $\|\vec{a}_j\|$ non sono osservazioni della stessa quantità};
+		\draw[-implies,double equal sign distance] (a) -- (b);
 		\end{tikzpicture}
 	\end{figure}
 \pause
-\textbf{Soluzione}: variabili riassuntive dell'intervallo:
+\textbf{Soluzione}: usare indici riassuntivi dell'intervallo.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{ll}
