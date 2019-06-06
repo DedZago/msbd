@@ -3,7 +3,7 @@
 \begin{document}
 \section{Modelli di classificazione pesati}
 
-Essendo interessati all\rq{}identificazione corretta dello {\em shake}, si è scelto di attribuire dei pesi alle classi che penalizzassero quest\rq{}ultima. I pesi sono stati determinati mediante una ricerca sequenziale. Usando come pesi di base le frequenze relative di ciascuna classe, si è diviso il peso della classe {\em shake} secondo una sequenza crescente di valori, normalizzando i pesi delle altre classi in modo da farli sommare a uno. I pesi sono stati scelti in modo da massimizzare l\rq{}accuratezza sotto il vincolo di avere un tasso di veri positivi nella classe {\em shake} pari al $100\%$ nell\rq{}insieme di convalida.
+Essendo interessati all\rq{}identificazione corretta dello {\em shake}, si è scelto di attribuire dei pesi alle classi che penalizzassero quest\rq{}ultima. I pesi sono stati determinati mediante una ricerca sequenziale: usando come pesi di base le frequenze relative di ciascuna classe, si è diviso il peso della classe {\em shake} secondo una sequenza crescente di valori, normalizzando i pesi delle altre classi in modo da farli sommare a uno. I pesi sono stati scelti per massimizzare l\rq{}accuratezza sotto il vincolo di avere un tasso di veri positivi nella classe {\em shake} pari al $99\%$ nell\rq{}insieme di convalida.
 
 I risultati in termini di accuratezza ottenuti sull\rq{}insieme di convalida sono mostrati in tabella.
 \input{accuracy-table-pen.tex}
@@ -14,7 +14,7 @@ La matrice di confusione per il modello migliore è la seguente.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{../../figure/confusionMatrix-QDA-penalizzata.png}
-	\caption{Matrice di confusione ottenuta con l'analisi discriminante quadratica.}
+	\caption{Matrice di confusione ottenuta con l'analisi discriminante quadratica pesata.}
 	\label{fig:qda_pen}
 \end{figure}
 \end{document}
