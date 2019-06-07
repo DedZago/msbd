@@ -136,15 +136,40 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 \end{column}%
 \hfill%
 \begin{column}{.4\textwidth}
-ciao
+\textbf{qui bisogna riportare i valori delle esplicative su due intervallini di esempio di due diverse attività...}
 \end{column}%
 \end{columns}
 \end{frame}
 
 \begin{frame}{Analisi esplorative}
+\begin{columns}[T] % align columns
+\begin{column}{.33\textwidth}
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{../figure/t-SNE.png}
+\includegraphics[width=\textwidth]{../figure/minA.png}
 \end{figure}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/maxA.png}
+\end{figure}
+\end{column}%
+\hfill%
+\begin{column}{.33\textwidth}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/medA.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/meanA.png}
+\end{figure}
+\end{column}%
+\hfill%
+\begin{column}{.33\textwidth}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/varA.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/MVDeriv.png}
+\end{figure}
+\end{column}%
+\end{columns}
 \end{frame}
 
 \begin{frame}{Analisi esplorative}
@@ -156,15 +181,22 @@ ciao
 \end{figure}
 \end{frame}
 
+\begin{frame}{Analisi esplorative}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/t-SNE.png}
+\end{figure}
+\end{frame}
+
 \begin{frame}{I modelli}
 I modelli per la classificazione analizzati sono: 
 \begin{enumerate}
-\item \emph{Linear Discriminant Analysis};
-\item \emph{Quadratic Discriminant Analysis};
-\item Modello Multinomiale;
-\item Albero di Classificazione.
+\item Analisi discriminante lineare
+\item Analisi discriminante quadratica
+\item Modello Multinomiale
+\item Albero di Classificazione
 \end{enumerate}
-Per l'analisi il dataset è stato splittato in training, validation e test. % nomi in italiano non li ricordo ora
+
+Per l'analisi il dataset è stato diviso in stima, convalida e verifica. 
 \end{frame}
 
 \begin{frame}{L'accuratezza dei modelli}
@@ -198,16 +230,44 @@ Per l'analisi il dataset è stato splittato in training, validation e test. % no
 \end{columns}
 \end{frame}
 
-\begin{frame}{I pesi}
-%shake
+\begin{frame}{I modelli e lo shake}
+\textbf{Aggiungere tabella con tasso veri positivi sui modelli non pesati...}
+
+Per il problema in analisi, questi valori non sono sufficienti. 
+
+Come fare?
+\end{frame}
+
+\begin{frame}{Pesi}
+Riducendo il peso della classe {\em shake}, si riduce il tasso di {\em shake} erroneamente classificati.
+
+\textbf{Ma come scegliere i pesi?} \pause Ricerca sequenziale
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth]{../figure/andamento-pesi.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Pesi}
+\begin{center}
+È richiesto un tasso di {\em shake} correttamente classificati 
+
+superiore al $98\%$.
+\end{center}
+\begin{figure}[H]
+\includegraphics[width=0.6\textwidth]{../figure/acc-vs-veripos-qda.png}  
+\end{figure}
+
+\textbf{occhio che il crop taglia la leggenda...}
+
 \end{frame}
 
 \begin{frame}{I modelli pesati}
 \input{../relazione/tex/accuracy-table-pen.tex}
 \end{frame}
 
-\begin{frame}{L'insieme di test}
-%shake
+\begin{frame}{Sull'insieme di test}
+
 \end{frame}
 
 \section{Bibliografia}
