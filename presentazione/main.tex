@@ -20,6 +20,7 @@ Ormai con il cellulare è possibile fare moltissime cose.
 Cancellare messaggi, avere più giga\dots È tutto possibile con un solo shake.\\
 \smallskip
 Ma come si può riconoscere uno shake?
+\medskip
 \begin{figure}[H]
 \includegraphics[width=0.4\textwidth]{./images/vodafoneshake.png}
 \end{figure}
@@ -61,7 +62,7 @@ Questa fornisce l'accelerazione $\vec{a}_t = \begin{pmatrix}a_{xt} \\ a_{yt} \\ 
 \end{figure}
 \end{frame}
 
-\begin{frame}{Accelerazione}
+\begin{frame}{Accelerazione} % conlusione magari come possibili miglioramenti --> 9.8 
 Il sistema di riferimento dell'accelerometro è rotante, quindi $\vec{a}_t$ è difficile da trattare.
 \begin{figure}[H]
 \includegraphics[width=0.6\textwidth]{../figure/sensor_coordinate_system.png}
@@ -93,14 +94,17 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 \bottomrule
 \end{tabular}
 \end{table}
-\pause Perché non lavorare direttamente con le esplicative $\|\vec{a}_0\|,\dots,\|\vec{a}_{149}\|$?
+\begin{center}
+\pause \textbf{Perché non lavorare direttamente con le esplicative $\|\vec{a}_0\|,\dots,\|\vec{a}_{149}\|$?}
+% il legame tra le accelerazioni è nessuno --> per quato usiamo le  esplicative 
+\end{center}
 \end{frame}
 
 \begin{frame}{Accelerazione}
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-		\node[text width=3.2cm, align=left, rectangle] (a) at (-2.5,0){I segnali non sono periodici di periodo $T = \SI{1.5}{s}$};
+		\node[text width=3.2cm, align=left, rectangle] (a) at (-2.5,0){I segnali non sono periodici};
 		\node[text width=3.5cm, align=left	, rectangle] (b) at (2.5,0){Le esplicative $\|\vec{a}_j\|$ non sono osservazioni della stessa quantità};
 		\draw[-implies,double equal sign distance] (a) -- (b);
 		\end{tikzpicture}
@@ -118,6 +122,92 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda.
 	\end{tabular}
 \end{table}
+\end{frame}
+
+\begin{frame}{Le esplicative}
+\begin{columns}[T] % align columns
+\begin{column}{.48\textwidth}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/salti.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/scale.png}
+\end{figure}
+\end{column}%
+\hfill%
+\begin{column}{.4\textwidth}
+ciao
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Analisi esplorative}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/t-SNE.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Analisi esplorative}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../figure/PCA.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../figure/ICA.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{I modelli}
+I modelli per la classificazione analizzati sono: 
+\begin{enumerate}
+\item \emph{Linear Discriminant Analysis};
+\item \emph{Quadratic Discriminant Analysis};
+\item Modello Multinomiale;
+\item Albero di Classificazione.
+\end{enumerate}
+Per l'analisi il dataset è stato splittato in training, validation e test. % nomi in italiano non li ricordo ora
+\end{frame}
+
+\begin{frame}{L'accuratezza dei modelli}
+\input{../relazione/tex/accuracy-table.tex}
+\end{frame}
+
+\begin{frame}{Focus sul problema}
+\textbf{OBIETTIVO}: evitare di confondere shake con altre attività.
+
+\end{frame}
+
+\begin{frame}{I modelli e lo shake}
+\begin{columns}[T] % align columns
+\begin{column}{.5\textwidth}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-LDA.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-Mn.png}
+\end{figure}
+\end{column}%
+\hfill%
+\begin{column}{.5\textwidth}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-QDA.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/confusionMatrix-Tree.png}
+\end{figure}
+\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{I pesi}
+%shake
+\end{frame}
+
+\begin{frame}{I modelli pesati}
+\input{../relazione/tex/accuracy-table-pen.tex}
+\end{frame}
+
+\begin{frame}{L'insieme di test}
+%shake
 \end{frame}
 
 \section{Bibliografia}
