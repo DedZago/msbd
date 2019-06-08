@@ -2,25 +2,23 @@
 
 \begin{document}
 \section{Modelli di classificazione}
-I modelli che sono stati utilizzati per classificare sono l'analisi discriminante lineare e quadratica, il modello multinomiale e l'albero di classificazione.
-
-Nella seguente tabella vengono riportate le percentuali di accuratezza raggiunte dalla classificazione effettuata da ogni modello nell'insieme di convalida.
+I modelli che sono stati utilizzati per classificare sono l'analisi discriminante lineare e quadratica, il modello multinomiale e l'albero di classificazione. In tabella~\ref{tab:acc} sono riportate le percentuali di accuratezza per ogni modello, sull'insieme di convalida.
 \input{accuracy-table.tex}
 
-La classificazione migliore è ottenuta con il modello multinomiale. L'importanza delle variabili esplicative è riassunta nella Figura~\ref{fig:importance-Tree}.
+La classificazione migliore è ottenuta con il modello multinomiale, la cui matrice di confusione è riportata in Figura~\ref{fig:mn}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.5\textwidth]{../../figure/importance-Tree.png}
-	\caption{Importanza delle variabili ottenuta con l'albero di classificazione.}
-	\label{fig:importance-Tree}
-\end{figure}
-Tale risultato è stato ottenuto dall'analisi condotta con l'albero di classificazione.
-
-La matrice di confusione per il modello migliore è la seguente.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.5\textwidth]{../../figure/confusionMatrix-Mn.png}
+	\includegraphics[width=\confusion]{../../figure/confusionMatrix-Mn.png}
 	\caption{Matrice di confusione ottenuta con il modello multinomiale.}
 	\label{fig:mn}
 \end{figure}
+
+Si può valutare l'importanza delle variabili esplicative tramite l'albero di classificazione ottimizzato (Figura~\ref{fig:importance-Tree}), calcolando la riduzione media dell'indice di Gini data dalla variabile.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\confusion]{../../figure/importance-Tree.png}
+	\caption{Importanza delle variabili ottenuta con l'albero di classificazione.}
+	\label{fig:importance-Tree}
+\end{figure}
+La variabile più rilevante per l'albero risulta essere \texttt{MVDeriv}, confermando quanto ipotizzato nel preprocessamento. Il massimo e il minimo dell'accelerazione sono, invece, le variabili meno importanti: non eliminando l'effetto dell'accelerazione di gravità, esse sono molto dipendenti dall'orientazione del cellulare durante il movimento.
 \end{document}
