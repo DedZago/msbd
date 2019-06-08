@@ -14,18 +14,11 @@ Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, che so
 		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda.
 	\end{tabular}
 \end{table}
-Siccome i segnali di {\em shake} sono ad alta frequenza, è stata utilizzata la variabile \texttt{MVDeriv} per discriminare le alte frequenze dalle basse frequenze. Infatti, \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata nell'intervallo, cioé quando la frequenza è alta. La derivata nell'intervallo è stata approssimata con\cite{NumpyGradientNumPy}
+Siccome i segnali di {\em shake} sono ad alta frequenza, è stata utilizzata la variabile \texttt{MVDeriv} per discriminare le alte frequenze dalle basse frequenze. Infatti, \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata nell'intervallo, cioé quando la frequenza è alta. La derivata nell'intervallo è stata approssimata con \cite{NumpyGradientNumPy}
 \[
-\hat{f}'(t_i) = \dfrac{f(t_i + \Delta t) - f(t_i - \Delta t)}{2\Delta t} + \mathcal{O}(\Delta t^2)\,.
+\dot{a}_t = \dfrac{a_{t + 1} - a_{t - 1}}{2}\,.
 \]
-
-Come prima analisi esplorativa, sono state valutate le distribuzioni delle variabili riassuntive per le varie classi (Figura~\ref{fig:marginali}). \textbf{Scrivere differenze\dots}
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=.8\textwidth]{mettere/grafici/delle/esplicative}
-%	\caption{{ t-SNE per i dati sbiancati}}
-%	\label{fig:marginali}
-%\end{figure}
+In appendice sono riportate le distribuzioni marginali delle variabili riassuntive, per ciascuna classe.\\
 
 Per valutare graficamente la separabilità delle classi, l'informazione migliore è data dal t-SNE sui dati sbiancati (Figura~\ref{fig:tsne}). Le componenti principali, invece, non riescono a separare le classi in modo soddisfacente (Appendice A).
 \begin{figure}[H]

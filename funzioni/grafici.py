@@ -53,9 +53,11 @@ def MatriceConfusione(y_true, y_pred, nome_immagine="" ,title="", col="Blues"):
     ticks = y_true.unique()
     ticks.sort()
     g = sns.heatmap(confusion_matrix(y_true, y_pred, labels=ticks), xticklabels=ticks, yticklabels=ticks,
-        cmap=col, annot=True, fmt="d")
+        cmap=col, annot=True, fmt="d", 	)
     #plt.xticks(np.arange(len(ticks)), ticks, rotation=90)
     g.set_xticklabels(g.get_yticklabels(), rotation =90)
+    g.set_ylabel("veri")
+    g.set_xlabel("previsti")
     plt.title(title)
     plt.savefig(nome_immagine,dpi=150, bbox_inches="tight")
     plt.show()
