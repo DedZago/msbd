@@ -77,5 +77,18 @@ Il tasso di veri positivi per i vari modelli è comunque superiore per il modell
 %
 
 %
-Utilizziamo dei pesi per le varie classi! 
+Utilizziamo dei pesi per le varie classi. Diminuendo il peso attrribuito alla classe il tesso di falsi positivi relativi alla classe shake diminuisce.
+%siamo certi che sia sempre così?
+Se la classe shake viene sottopesata, si classificano meno unità in tale classe, e ci si aspetta che le poche classificate siano realmente shake. 
+Adesso il problema diventa come scegliere i pesi ottimali da attribuire alle varie classi. Abbiamo scelto di far variare il peso della classe shake effettuando una ricerca di tipo sequenziale. Come punto di partenza, si sono utilizzati i pesi dati dalle frequenze relative in coiascuna classe. Il peso della classe shake è stato diviso per una sequenza crescente di interi. Il peso così ottenuto segue l\rq{}andamento in fugura. Operando in questo modo è stato possibile provare una sequenza più fitta di pesi piccoli avendo osservato che l\rq{}ottimo è raggiunto in quel range doi valori.
 %
+
+%
+Come detto, questo porta ad aumetare il tasso di veri positivi. Nel grafico viene riportato l\rq{}aumento del tasso di veri positivi per le varie combinazioni di peso provate (pesi via via decrescenti chiamati ocme iterazioni della ricerca sequenziale).
+Ovviamente questo comporta una diminuzione dell\rq{}accuratezza generale del modello. Per il problema analizzato si è disposti ad accettare un tasso di shake correttamente classificati non inferiore al 98\%. Si è quindi cercato il peso della classe shake che massimizzasse l\rq{}accuratezza sotto tale vincolo.
+Ovviamente Diminuendo il peso della classe shake, si sono dovuti aggiustare i pesi delle altre classi in modo che sommino ad 1
+%
+
+%
+Questo tipo di approccio è stato applicato a tutti i modelli precedentemente applicati
+%perché non c é l\rq{}albero???? AGGIUNGERLO ANCHE SE NON CAMBIA
