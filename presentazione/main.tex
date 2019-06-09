@@ -104,7 +104,7 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-		\node[text width=3.2cm, align=left, rectangle] (a) at (-2.5,0){I segnali non sono periodici};
+		\node[text width=3.2cm, align=left, rectangle] (a) at (-2.5,0){I segnali non sono periodici di periodo $\SI{1.5}{s}$};
 		\node[text width=3.5cm, align=left	, rectangle] (b) at (2.5,0){Le esplicative $\|\vec{a}_j\|$ non sono osservazioni della stessa quantità};
 		\draw[-implies,double equal sign distance] (a) -- (b);
 		\end{tikzpicture}
@@ -222,20 +222,32 @@ Per l'analisi il dataset è stato diviso in stima, convalida e verifica.
 \begin{frame}{I modelli e lo shake}
 \begin{columns}[T] % align columns
 \begin{column}{.5\textwidth}
+\begin{center}
+\small{LDA}
+\end{center}
 \begin{figure}[H]
 \includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-LDA.png}
 \end{figure}
+\begin{center}
+\small{Multinomiale}
+\end{center}
 \begin{figure}[H]
 \includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-Mn.png}
 \end{figure}
 \end{column}%
 \hfill%
 \begin{column}{.5\textwidth}
+\begin{center}
+\small{QDA}
+\end{center}
 \begin{figure}[H]
 \includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-QDA.png}
 \end{figure}
+\begin{center}
+Albero di classificazione
+\end{center}
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{../figure/confusionMatrix-Tree.png}
+\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-Tree.png}
 \end{figure}
 \end{column}%
 \end{columns}
@@ -276,7 +288,25 @@ superiore al $98\%$.
 \end{frame}
 
 \begin{frame}{Sull'insieme di test}
-
+\begin{columns}[T] % align columns
+\begin{column}{.5\textwidth}
+\begin{center}
+\small{Multinomiale}
+\end{center}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/confusionMatrix-Mn-test.png}
+\end{figure}
+\end{column}%
+\hfill%
+\begin{column}{.5\textwidth}
+\begin{center}
+QDA penalizzata
+\end{center}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/confusionMatrix-QDA-penalizzata-test.png}
+\end{figure}
+\end{column}%
+\end{columns}
 \end{frame}
 
 \section{Bibliografia}
