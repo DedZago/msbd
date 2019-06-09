@@ -1,0 +1,57 @@
+%
+Si sa che al giorno d\rq{}oggi diverse applicazioni per cellulare cominciano a integrare funzionalità attivabili grazie ad uno shake. Ad esempio il famosissimo vodafone shake che permette di ricaricare i giga della promozione shakerando il telefono. Altre utiizzi meno conoscuiuti sono ad esempio per gli utenti Apple quelli di cancellare il testo digitato nell\rq{}app messaggi o nell\rq{}app telegram. Anchefacebook ha integrato la 
+possibilità di segnalare contenuti inappropriati grazie ad uno shake del telefono.
+%
+
+%
+Ci siamo ispirati a questo nuovo modo di interagire con il proprio telefono per immaginare un applicazione per rilevare le diverse attività motorie. Abbiamo pensato che il movimento dello shake potesse essere utile per far concludere l\rq{}attività e fare il calcolo delle calorie bruciate nell\rq{}corso dell\rq{}attività fisica.
+in particolare ci siamo focalizzati su queste attività da riconoscere e classificare.
+Ovviamente non abbiamo creato l\rq{}applicazione che calcoli il dispendio calorico ma ci siamo interessati al problema statistico della classificazione. 
+%
+
+%
+per fare questo ci siamo serviti dell\rq{}applicazione PhonePi (con spese di 0.61 centesimi)  che permette di rilevare le componenti sugli cartesiani del vettore tridimensionale dell\rq{}accelerazione ogni 10 millisecondi.
+In questo grafico abbiamo riportato i grafici dell\rq{}accelerazione subita dal telefono durante una generica attività su ogni componente allo scorrere del tempo. 
+Questa e quindi la tipologia di dati con cui abbiamno avuto a che fare. 
+%
+
+%
+Come abbiamo visto prima i dati sono molti e complessi (big data), in particolare lavorare direttamente con i dati dell\rq{}accelerazione sulle singole componenti sarebbe risultato difficile in quanto l\rq{}applicazione misurava l\rq{}accelerazione rispetto al sistema di riferimento del telefono. tuttavia durante l\rq{}attività fisica come salita e discesa scale o corsa, il sistema di riferimento ruota e quindi non è semplice da trattare.
+%
+
+%
+una prima semplificazione di questi dati si è ottenuta considerando il vettore risultante dell\rq{}accelerazione, ovvero il modulo dal vettore. In questo modo non abbiamo più dovuto lavorare con la serie trivariata ma con una serie univariata.
+Quindi riassumendo per ciascuna attività motoria abbiamo ottenuto un vettoreche contiene il modulo dell\rq{}accelerazione ogni 10 millisecondi per i 2 minuti di registrazione.
+Nei grafici abbiamo riportato alcuni esempi della serie storica ottenuta nelle diverse attività. Come si può notare le serie sono abbastanza diverse e presentano alcune peculiarità che riprenderemo in seguito.
+%
+Perché lavorare su intervallini della serie e non sulla serie intera? Se ripensiamo all\rq{}applicazione per monitorare l\rq{}attività fisica, vogliamo che il telefono riconosca in tempo reale il tipo di attività che stiamo svolgendo. Quindi abbiamo pensato che l\rq{}applicazione dovesse essere in grado di classificare correttamente l\rq{}attività sulla base dei dati rilevati negli ultimi 1,5 secondi. Se cambi attività al massimo in un secondo e mezzo il telono la riconosce, questo per un corretto conteggio delle calorie. 
+La tabella mostra i 150 valori dell\rq{}accelerazione (ricordiamo presi ogni 10 millisecondi) in ciascun intervallo di 1,5 secondi. Perché non lavorare con queste esplicative?...
+%
+
+%
+Il problema è che i valori dell\rq{}accelerazione, ad esempio, rilevati all\rq{}istante 0, non sono misurazioni di una stessa variabile. Essi rappresentano infatti semplicamente il valore dell\rq{}accelerazione al primo istante di misurazione in ogni intervallo di 1.5 secondi. Avendo suddiviso la serie originale  in intervalli di 1,5 secondi, gli $a_0$ sarebbero confrontabili se il segnale avesse una periodicità di 1,5 secondi o tuttalpiù una periodicità di cui 1,5 è multiplo. Non essendo periodico il nostro segnale, non ha alcun senso attribuire un significato al valore $a_0$. Ha invece senso trattare il segnale come serie storica o, come abbiamo fatto noi, trovare delle opportune variabili che sintetizzassero il contenuto informativo della serie. Le variabili che abbiamo ritenuto importantri osservando i grafici delle serie sono: ...
+%
+
+% o si aggiunge slide o si lascia per aventuali domande (magari forzate)
+come avete calcolato MVDeriv?
+Vedi relazione di scarpa...(formula e interpretazione come tasso di variazione della derivata prima)
+è la nostra variabile più importante
+%
+
+%
+Qui mostriamo solo due esempi di intervalli di 1,5 secondi su cui sono stati calcolati i valori delle esplicative. La matrice dei dati dopo il preprocessamento avrà dunque 6 colonne per le variabili esplicative per ciascuna unità statistica.
+%
+
+%
+Qui mostriamo a livello esplorativo le distribuzioni delle 6 variabili scelte nelle diverse classi. Come si può notare alcune variabili hanno una distribuzione marcatamente diversa in ciascuna classe, mentre altre risultano discriminare solo qualche classe da tutte le altre.
+%
+
+%
+Come prime analisi esplorative per vedere se le diverse attività sono in un qualche modo separabili, abbiamo provato a fare le componenti principali e le componenti indipendenti sui dati sbiancati. Come si nota tuttavia nessuna delle due risulta appropriata per la discriminazione delle classi se si proiettano i punti sulle prime due componenti.
+%perché non discriminano? forse le prime due PC (o IC) spiegano poco, servirebbero più componenti (-> vedere le percentuali di varianza spiegata)
+
+
+
+
+%
+Un shake errato farebbe terminare l\rq{}attività in modo involontario intorromendo il flusso di dati raccolti
