@@ -49,9 +49,20 @@ Qui mostriamo a livello esplorativo le distribuzioni delle 6 variabili scelte ne
 %
 Come prime analisi esplorative per vedere se le diverse attività sono in un qualche modo separabili, abbiamo provato a fare le componenti principali e le componenti indipendenti sui dati sbiancati. Come si nota tuttavia nessuna delle due risulta appropriata per la discriminazione delle classi se si proiettano i punti sulle prime due componenti.
 %perché non discriminano? forse le prime due PC (o IC) spiegano poco, servirebbero più componenti (-> vedere le percentuali di varianza spiegata)
+%
 
+%
+Con il t-sne sempre sui dati sbiancati, invece si nota una separazione abbastanza marcata di tutte le diverse attivtià, shake e camminata sono separati in due gruppi. Questo probabilmente avviene per una eterogeneità intraclasse dovuta al fatto che i dati sono stati rilevati su persone diverse che naturalmente hanno un diverso modo di utilizzare il cellulare e di svolgere le attività motorie. 
+%
 
+%
+Procedendo quindi con la classificazione abbiamo provato tutti i modelli conosciuti per vedere quale nel nostro caso presentava un risultato migliore. Per valutare il risultato e non incorrere in problemi di sovradattamento abbiamo diviso il dataset in tre parti. Il primo contiene il 70\% delle oss disponibili ed è stato utilizzato per la stima dei modelli, il secondo sottoinsieme contiene il 15\% delle oss restatnti e viene utilizzato per scegliere il modello migliore che soddifa  i criteri rischiesto. Sull'insieme di test si è valutata la performance del modello selezionato. 
+%
 
+%
+Il criterio di valutazione dei modelli è l'accuratezza. In tabella vengono riportati tutti i modelli provati ordinati per tale criterio. Notiamo che il modello che sull'insieme di convalida presenta un adattamento migliore è la multinomiale. Per l'albero di classificazione è stato adattato sia l'albero completo sia quello potato. L'albero potato presenta un lieve miglioramento rispetto all'albero completo
+% dati albero con profondità per i due 
+%
 
 %
 Un shake errato farebbe terminare l\rq{}attività in modo involontario intorromendo il flusso di dati raccolti
