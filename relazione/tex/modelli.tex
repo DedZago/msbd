@@ -13,7 +13,7 @@ La classificazione migliore è ottenuta con il modello multinomiale, la cui matr
 	\label{fig:mn}
 \end{figure}
 
-Si può valutare l'importanza delle variabili esplicative tramite l'albero di classificazione ottimizzato (Figura~\ref{fig:importance-Tree}), calcolando la riduzione media dell'impurità di Gini data dalla variabile \cite{DecisionTreeClassifier}.
+Si può valutare l'importanza delle variabili esplicative tramite l'albero di classificazione ottimizzato (Figura~\ref{fig:importance-Tree}), calcolando la riduzione totale normalizzata dell'impurità di Gini data da ciascuna variabile\cite{DecisionTreeClassifier}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.82\confusion]{../../figure/importance-Tree.png}
