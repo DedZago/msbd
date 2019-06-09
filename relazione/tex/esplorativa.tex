@@ -14,7 +14,7 @@ Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, che so
 		\texttt{MVDeriv}& media del valore assoluto della derivata seconda.
 	\end{tabular}
 \end{table}
-Siccome i segnali di {\em shake} sono ad alta frequenza, si è scelto di utilizzare la variabile \texttt{MVDeriv} per discriminare le alte frequenze dalle basse frequenze. Infatti, \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata nell'intervallo, cioé quando la frequenza è alta. L'operazione di derivazione nel punto $t$ è approssimata con\cite{NumpyGradientNumPy}
+Siccome i segnali di {\em shake} sono ad alta frequenza, si è scelto di utilizzare la variabile \texttt{MVDeriv} per discriminare le alte frequenze dalle basse frequenze. Infatti, \texttt{MVDeriv} assume valori grandi quando la curvatura della funzione è mediamente elevata nell'intervallo, cioé quando la frequenza è alta. L'operazione di derivazione all'istante $t$ è approssimata con\cite{NumpyGradientNumPy}
 \[
 \dot{a}_t = \dfrac{a_{t + 1} - a_{t - 1}}{2}\,.
 \]
