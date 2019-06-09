@@ -241,7 +241,20 @@ Per l'analisi il dataset è stato diviso in stima, convalida e verifica.
 \end{frame}
 
 \begin{frame}{I modelli e lo shake}
-\textbf{Aggiungere tabella con tasso veri positivi sui modelli non pesati...}
+\begin{table}[H]
+\begin{tabular}{cc}
+\toprule
+Modello & Tasso veri positivi \\
+& \emph{shake} \\
+\midrule
+Multinomiale & 0.91\\
+QDA & 0.88\\
+Albero decisionale ottimizzato & --\\
+Albero decisionale & --\\
+LDA & 0.80\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Per il problema in analisi, questi valori non sono sufficienti. 
 
@@ -281,7 +294,7 @@ superiore al $98\%$.
 Multinomiale
 \end{center}
 \begin{figure}[H]
-\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-Mn-test.png}
+\includegraphics[width=\textwidth]{../figure/confusionMatrix-Mn-test.png}
 \end{figure}
 \end{column}%
 \hfill%
@@ -290,7 +303,7 @@ Multinomiale
 QDA penalizzata
 \end{center}
 \begin{figure}[H]
-\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-QDA-penalizzata-test.png}
+\includegraphics[width=\textwidth]{../figure/confusionMatrix-QDA-penalizzata-test.png}
 \end{figure}
 \end{column}%
 \end{columns}
