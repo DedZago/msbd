@@ -2,7 +2,7 @@
 
 \begin{document}
 \section{Preprocessamento ed analisi esplorativa}
-Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, che sono stati utilizzati come unità statistiche. Dal momento che ciascuna unità è una serie storica, si è scelto di riassumerle con delle variabili:
+Ciascun segnale è stato suddiviso in intervalli di ampiezza \SI{1.5}{s}, che sono stati utilizzati come unità statistiche. Dal momento che ciascuna unità è una serie storica, si è scelto di riassumerla con delle variabili quali:
 \begin{table}[H]
 	\centering
 	\begin{tabular}{ll}
@@ -19,7 +19,7 @@ Siccome i segnali di {\em shake} sono ad alta frequenza, è stato pensato di usa
 \dot{a}_t = \dfrac{a_{t + 1} - a_{t - 1}}{2}\,.
 \]
 I dati sono stati suddivisi in insieme di stima (70\%), di convalida (15\%) e di test (15\%). Le previsioni riportate nelle conclusioni sono relative all'insieme di test, su cui sono stati applicati i modelli migliori.
-In appendice sono riportate le distribuzioni marginali delle variabili riassuntive, per ciascuna classe.\\
+In appendice sono riportate le distribuzioni marginali delle variabili riassuntive per ciascuna classe.\\
 
 Per valutare graficamente la separabilità delle classi, l'informazione migliore è data dal t-SNE sui dati sbiancati (Figura~\ref{fig:tsne}). Le componenti principali, invece, non riescono a separare le classi in modo soddisfacente (Appendice A).
 \begin{figure}[H]
