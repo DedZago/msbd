@@ -3,12 +3,12 @@
 \begin{document}
 \section{Modelli di classificazione pesati}
 
-Essendo interessati all\rq{}identificazione corretta dello {\em shake}, si è scelto di attribuire dei pesi, che penalizzassero quest\rq{}ultimo. I pesi ottimi sono stati determinati mediante una ricerca sequenziale: usando come pesi di base le frequenze relative di ciascuna classe, si è diviso il peso della classe {\em shake} secondo una sequenza crescente di interi, successivamente normalizzando l'intero vettore dei pesi. I pesi ottimi sono stati scelti per massimizzare l\rq{}accuratezza sotto il vincolo di avere un tasso di veri positivi nella classe {\em shake} pari almeno al $98\%$ nell\rq{}insieme di convalida.
+Essendo interessati all\rq{}identificazione corretta dello {\em shake}, si è scelto di attribuire dei pesi che penalizzassero quest\rq{}ultimo. I pesi ottimi sono stati determinati mediante una ricerca sequenziale. Usando come pesi di base le frequenze relative di ciascuna classe, si è diviso il peso della classe {\em shake} secondo una sequenza crescente di interi. L'intero vettore dei pesi è stato successivamente normalizzato in modo che la somma dei pesi sia pari ad uno. I pesi ottimi sono stati scelti in modo da massimizzare l\rq{}accuratezza sotto il vincolo di avere un tasso di veri positivi nella classe {\em shake} pari almeno al $98\%$ nell\rq{}insieme di convalida.
 
-I risultati in termini di accuratezza ottenuti sull\rq{}insieme di convalida sono mostrati in tabella.
+I risultati in termini di accuratezza, ottenuti sull\rq{}insieme di convalida, sono mostrati in tabella.
 \input{accuracy-table-pen.tex}
 
-La classificazione migliore tenendo conto della penalizzazione è ottenuta con l\rq{}analisi discriminante quadratica, mentre il modello multinomiale scende al secondo posto.
+Tenendo conto del vincolo, la classificazione migliore è ottenuta con l\rq{}analisi discriminante quadratica, mentre il modello multinomiale scende al secondo posto.
 
 La matrice di confusione per il modello migliore è riportata in Figura~\ref{fig:qda_pen}.
 \begin{figure}[H]
