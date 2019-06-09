@@ -65,4 +65,17 @@ Il criterio di valutazione dei modelli è l'accuratezza. In tabella vengono ripo
 %
 
 %
-Un shake errato farebbe terminare l\rq{}attività in modo involontario intorromendo il flusso di dati raccolti
+Il nostro obiettivo principale era però quello di non confondere lo shake con le altre attività per non bloccare la nostra ipotetica applicazione. Un shake errato infatti farebbe terminare l\rq{}attività in modo involontario intorromendo il flusso di dati raccolti.
+%
+
+%
+Focalizzandoci sulle matrici di corretta classificazione si nota che benchè i modelli abbiano una buona percentuale di accuratezza confondono molte volte lo shake con corsa tasca, cosa decisamente non voluta in quanto è molto probvbabile che questa applicazione sia utilizzata da quelli che vanno a correre. 
+%
+
+%
+Il tasso di veri positivi per i vari modelli è comunque superiore per il modello multinomiale che presentava in generale un'accuratezza maggiore. Tuttavia si ritiene che questi valori non siano sufficienti per il nostro problema. Come risolvere questo cruccio?
+%
+
+%
+Utilizziamo dei pesi per le varie classi! 
+%
