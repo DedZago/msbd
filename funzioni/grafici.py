@@ -71,9 +71,9 @@ def DistGroup(X, grp, palette="colorblind", leg_loc=(1,0.8), file=None):
 
     for i in range(len(grp_dist)):
         sns.distplot(X[grp==grp_dist[i]], color = color[i],
-            hist=False, label=grp_dist[i])
+            hist=False)
 
-    plt.legend(bbox_to_anchor=leg_loc)
+    #plt.legend(bbox_to_anchor=leg_loc)
     if file:
     	plt.savefig(file, dpi=150, bbox_inches="tight")
 
