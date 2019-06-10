@@ -1,3 +1,4 @@
+\documentclass{report}
 \begin{document}
 %
 Si sa che al giorno d\rq{}oggi diverse applicazioni per cellulare cominciano a integrare funzionalità attivabili grazie ad uno shake. Ad esempio il famosissimo vodafone shake che permette di ricaricare i giga della promozione shakerando il telefono. Altre utiizzi meno conoscuiuti sono ad esempio per gli utenti Apple quelli di cancellare il testo digitato nell\rq{}app messaggi o nell\rq{}app telegram. Anchefacebook ha integrato la 
@@ -24,32 +25,29 @@ Come abbiamo visto prima i dati sono molti e complessi (big data), in particolar
 %
 
 %
-una prima semplificazione di questi dati si è ottenuta considerando il vettore risultante dell\rq{}accelerazione, ovvero il modulo dal vettore. In questo modo non abbiamo più dovuto lavorare con la serie trivariata ma con una serie univariata.
-Gravità
-Quindi riassumendo per ciascuna attività motoria abbiamo ottenuto un vettoreche contiene il modulo dell\rq{}accelerazione ogni 10 millisecondi per i 2 minuti di registrazione.
-Nei grafici abbiamo riportato alcuni esempi della serie storica ottenuta nelle diverse attività. Come si può notare le serie sono abbastanza diverse e presentano alcune peculiarità che riprenderemo in seguito.
-%
-Perché lavorare su intervallini della serie e non sulla serie intera? Quindi abbiamo pensato che l\rq{}applicazione dovesse essere in grado di classificare correttamente l\rq{}attività sulla base dei dati rilevati negli ultimi 1,5 secondi. Se cambi attività al massimo in un secondo e mezzo il telono la riconosce, questo per un corretto conteggio delle calorie. 
-La tabella mostra i 150 valori dell\rq{}accelerazione (ricordiamo presi ogni 10 millisecondi) in ciascun intervallo di 1,5 secondi. Perché non lavorare con queste esplicative?...
+Abbiamo deciso di lavorare sull'intensità dell'accelerazione, indipendentemente dall'orientazione del cellulare. In questo modo, otteniamo delle serie univariate, analizzabili più facilmente.
+
+Dai grafici di esempio, si possono osservare le prime differenze tra le serie, in termini di ampiezza (max, min) e frequenza del segnale.
+Come detto prima, siccome c'è il fattore di disturbo della gravità, il minimo del segnale oscilla attorno a 9.81.
 %
 
 %
-Il problema è che i valori dell\rq{}accelerazione, ad esempio, rilevati all\rq{}istante 0, non sono misurazioni di una stessa variabile. Essi rappresentano infatti semplicamente il valore dell\rq{}accelerazione al primo istante di misurazione in ogni intervallo di 1.5 secondi. Avendo suddiviso la serie originale  in intervalli di 1,5 secondi, gli $a_0$ sarebbero confrontabili se il segnale avesse una periodicità di 1,5 secondi o tuttalpiù una periodicità di cui 1,5 è multiplo. Non essendo periodico il nostro segnale, non ha alcun senso attribuire un significato al valore $a_0$. 
+Ovviamente, per adattare i modelli di classificazione, è necessario trasformare i dati in una forma matriciale più "classica". Abbiamo preso intervallini di 1.5 secondi, che formano le unità statistiche, e l'accelerazione ad ogni istante è l'esplicativa.
+Perché non lavorare con queste esplicative?...
+%
+
+%
+Il problema è che i valori dell\rq{}accelerazione, ad esempio, rilevati all\rq{}istante 0, non sono misurazioni della stessa grandezza. Essi rappresentano infatti semplicamente il valore dell\rq{}accelerazione al primo istante di misurazione in ogni intervallo di 1.5 secondi. Avendo suddiviso la serie originale  in intervalli di 1,5 secondi, gli $a_0$ sarebbero confrontabili se il segnale avesse una periodicità che è multipla di 1.5s.
+Dal grafico si può capire meglio, anche guardando l'istante iniziale per ogni curva
 % commento grafico
 %
 
 %
-Ha invece senso trattare il segnale come serie storica o, come abbiamo fatto noi, trovare delle opportune variabili che sintetizzassero il contenuto informativo della serie. Le variabili che abbiamo ritenuto importantri osservando i grafici delle serie sono: ...
-%
-
-% o si aggiunge slide o si lascia per aventuali domande (magari forzate)
-come avete calcolato MVDeriv?
-Vedi relazione di scarpa...(formula e interpretazione come tasso di variazione della derivata prima)
-è la nostra variabile più importante
+Per risolvere il problema, abbiamo trovato delle opportune variabili, che sintetizzassero il contenuto informativo della serie. Le variabili che abbiamo ritenuto importanti osservando i grafici delle serie sono: ...
 %
 
 %
-Qui mostriamo solo due esempi di intervalli di 1,5 secondi su cui sono stati calcolati i valori delle esplicative. La matrice dei dati dopo il preprocessamento avrà dunque 6 colonne per le variabili esplicative per ciascuna unità statistica.
+In particolare, MVDeriv è stata costruita per discriminare le alte frequenze dalle basse frequenze. L'operazione di derivazione è approssimata con
 %
 
 %
