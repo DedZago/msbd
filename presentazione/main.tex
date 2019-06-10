@@ -220,6 +220,12 @@ Per l'analisi il dataset è stato diviso in stima, convalida e verifica.
 \end{figure}
 \end{frame}
 
+\begin{frame}{Importanza delle variabili}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/importance-Tree.png}
+\end{figure}
+\end{frame}
+
 \begin{frame}{Focus sul problema}
 \textbf{OBIETTIVO}: evitare di confondere shake con altre attività.
 
@@ -282,12 +288,14 @@ superiore al $98\%$.
 \begin{column}{.5\textwidth}
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{../figure/confusionMatrix-Mn-test.png}
+\caption{Matrice di confusione per il modello multinomiale nell'insieme di test, accuratezza 85.7\%, {\em shake} corretti 85.5\%.}
 \end{figure}
 \end{column}%
 \hfill%
 \begin{column}{.5\textwidth}
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{../figure/confusionMatrix-QDA-penalizzata-test.png}
+\caption{Matrice di confusione per la QDA pesata nell'insieme di test, accuratezza 83.5\%, {\em shake} corretti 98.0\%.}
 \end{figure}
 \end{column}%
 \end{columns}
