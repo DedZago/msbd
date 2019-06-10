@@ -213,31 +213,16 @@ Per l'analisi il dataset è stato diviso in stima, convalida e verifica.
 \input{../relazione/tex/accuracy-table.tex}
 \end{frame}
 
-\begin{frame}{Focus sul problema}
-\textbf{OBIETTIVO}: evitare di confondere shake con altre attività.
 
-\end{frame}
-
-\begin{frame}{I modelli e lo shake}
-\begin{columns}[T] % align columns
-\begin{column}{.5\textwidth}
-\begin{figure}[H]
-\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-LDA.png}
-\end{figure}
+\begin{frame}{Il modello}
 \begin{figure}[H]
 \includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-Mn.png}
 \end{figure}
-\end{column}%
-\hfill%
-\begin{column}{.5\textwidth}
-\begin{figure}[H]
-\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-QDA.png}
-\end{figure}
-\begin{figure}[H]
-\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-Tree.png}
-\end{figure}
-\end{column}%
-\end{columns}
+\end{frame}
+
+\begin{frame}{Focus sul problema}
+\textbf{OBIETTIVO}: evitare di confondere shake con altre attività.
+
 \end{frame}
 
 \begin{frame}{I modelli e lo shake}
@@ -270,10 +255,19 @@ Riducendo il peso della classe {\em shake}, si riduce il tasso di {\em shake} er
 
 \end{frame}
 
+\begin{frame}{I modelli pesati}
+\input{../relazione/tex/accuracy-table-pen.tex}
+\end{frame}
+
+\begin{frame}{I modelli pesati}
+\begin{figure}[H]
+\includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-QDA-penalizzata.png}
+\end{figure}
+\end{frame}
+
 \begin{frame}{Pesi}
 \begin{center}
 È richiesto un tasso di {\em shake} correttamente classificati 
-
 superiore al $98\%$.
 \end{center}
 \begin{figure}[H]
@@ -282,9 +276,6 @@ superiore al $98\%$.
 
 \end{frame}
 
-\begin{frame}{I modelli pesati}
-\input{../relazione/tex/accuracy-table-pen.tex}
-\end{frame}
 
 \begin{frame}{Sull'insieme di test}
 \begin{columns}[T] % align columns
