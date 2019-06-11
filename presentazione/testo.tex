@@ -1,104 +1,28 @@
-\documentclass{report}
+\documentclass{beamer}
+\usetheme[compress]{Padova}
+\usepackage{presentazione}
+\defbeamertemplate*{background canvas}{mydefault}
+{%
+      \ifbeamercolorempty[bg]{background canvas}{}{\color{bg}\vrule width\paperwidth height\paperheight}% copied beamer default here
+    }
+
+    \defbeamertemplate*{background canvas}{bg}
+    {%
+      \color{rossoPantano}\vrule width\paperwidth height\paperheight% added bg color
+    }
+
+    \BeforeBeginEnvironment{frame}{%
+      \setbeamertemplate{background canvas}[mydefault]%
+    }
+
+    \makeatletter
+    \define@key{beamerframe}{bg}[true]{%
+      \setbeamertemplate{background canvas}[bg]%
+    }
+    \makeatother
+
 \begin{document}
-%
-Si sa che al giorno d\rq{}oggi diverse applicazioni per cellulare cominciano a integrare funzionalità attivabili grazie ad uno shake. Ad esempio il famosissimo vodafone shake che permette di ricaricare i giga della promozione shakerando il telefono. Altre utiizzi meno conoscuiuti sono ad esempio per gli utenti Apple quelli di cancellare il testo digitato nell\rq{}app messaggi o nell\rq{}app telegram. Anchefacebook ha integrato la 
-possibilità di segnalare contenuti inappropriati grazie ad uno shake del telefono.
-%
+\begin{frame}[bg]
 
-%
-Ci siamo ispirati a questo nuovo modo di interagire con il proprio telefono per immaginare un applicazione per rilevare le diverse attività motorie. Abbiamo pensato che il movimento dello shake potesse essere utile per far concludere l\rq{}attività e fare il calcolo delle calorie bruciate nell\rq{}corso dell\rq{}attività fisica.
-in particolare ci siamo focalizzati su queste attività da riconoscere e classificare.
-Ovviamente non abbiamo creato l\rq{}applicazione che calcoli il dispendio calorico ma ci siamo interessati al problema statistico della classificazione. 
-%
-
-%
-%accelerometro --> tra i vari sensori c'è l'accelerometro (giroscopio (acc angolare), accelerometro, termomentro sunsore di prossimità luce e orientometro(posiz ripetto al sist di riferimento))
-%scatolina che contiene fluido il fluido esercita pressione contro le pareti misurando la pressione posso calcolare accelerazoione 
-%acc di gravità esercita pressione sul fluido
-per fare questo ci siamo serviti dell\rq{}applicazione PhonePi (con spese di 0.61 centesimi)  che permette di rilevare le componenti sugli cartesiani x y z del cellulare del vettore tridimensionale dell\rq{}accelerazione ogni 10 millisecondi.
-In questo grafico abbiamo riportato i grafici dell\rq{}accelerazione subita dal telefono durante una generica attività su ogni componente allo scorrere del tempo. 
-Questa e quindi la tipologia di dati con cui abbiamno avuto a che fare. 
-%
-
-%
-Come abbiamo visto prima i dati sono molti e complessi (big data), in particolare lavorare direttamente con i dati dell\rq{}accelerazione sulle singole componenti sarebbe risultato difficile in quanto l\rq{}applicazione misurava l\rq{}accelerazione rispetto al sistema di riferimento del telefono. tuttavia durante l\rq{}attività fisica come salita e discesa scale o corsa, il sistema di riferimento ruota e quindi non è semplice da trattare. serie storica multivariata e a componenti correlate xyz e se il sistema ruota le componenti delle acc cambiano.
-%
-
-%
-Abbiamo deciso di lavorare sull'intensità dell'accelerazione, indipendentemente dall'orientazione del cellulare. In questo modo, otteniamo delle serie univariate, analizzabili più facilmente.
-
-Dai grafici di esempio, si possono osservare le prime differenze tra le serie, in termini di ampiezza (max, min) e frequenza del segnale.
-Come detto prima, siccome c'è il fattore di disturbo della gravità, il minimo del segnale oscilla attorno a 9.81.
-%
-
-%
-Ovviamente, per adattare i modelli di classificazione, è necessario trasformare i dati in una forma matriciale più "classica". Abbiamo preso intervallini di 1.5 secondi, che formano le unità statistiche, e l'accelerazione ad ogni istante è l'esplicativa.
-Perché non lavorare con queste esplicative?...
-%
-
-%
-Il problema è che i valori dell\rq{}accelerazione, ad esempio, rilevati all\rq{}istante 0, non sono misurazioni della stessa grandezza. Essi rappresentano infatti semplicamente il valore dell\rq{}accelerazione al primo istante di misurazione in ogni intervallo di 1.5 secondi. Avendo suddiviso la serie originale  in intervalli di 1,5 secondi, gli $a_0$ sarebbero confrontabili se il segnale avesse una periodicità che è multipla di 1.5s.
-Dal grafico si può capire meglio, anche guardando l'istante iniziale per ogni curva
-% commento grafico
-%
-
-%
-Per risolvere il problema, abbiamo trovato delle opportune variabili, che sintetizzassero il contenuto informativo della serie. Le variabili che abbiamo ritenuto importanti osservando i grafici delle serie sono: ...
-%
-
-%
-In particolare, MVDeriv è stata costruita per discriminare le alte frequenze dalle basse frequenze. L'operazione di derivazione è approssimata con
-%
-
-%
-Qui mostriamo a livello esplorativo le distribuzioni delle 6 variabili scelte nelle diverse classi. Come si può notare alcune variabili hanno una distribuzione marcatamente diversa in ciascuna classe, mentre altre risultano discriminare solo qualche classe da tutte le altre.
-%
-
-%
-Come prime analisi esplorative per vedere se le diverse attività sono in un qualche modo separabili, abbiamo provato a fare le componenti principali e le componenti indipendenti sui dati sbiancati. Come si nota tuttavia nessuna delle due risulta appropriata per la discriminazione delle classi se si proiettano i punti sulle prime due componenti.
-%perché non discriminano? forse le prime due PC (o IC) spiegano poco, servirebbero più componenti (-> vedere le percentuali di varianza spiegata)
-%
-
-%
-Con il t-sne sempre sui dati sbiancati, invece si nota una separazione abbastanza marcata di tutte le diverse attivtià, shake e camminata sono separati in due gruppi. Questo probabilmente avviene per una eterogeneità intraclasse dovuta al fatto che i dati sono stati rilevati su persone diverse che naturalmente hanno un diverso modo di utilizzare il cellulare e di svolgere le attività motorie. 
-%
-
-%
-Procedendo quindi con la classificazione abbiamo provato tutti i modelli conosciuti per vedere quale nel nostro caso presentava un risultato migliore. Per valutare il risultato e non incorrere in problemi di sovradattamento abbiamo diviso il dataset in tre parti. Il primo contiene il 70\% delle oss disponibili ed è stato utilizzato per la stima dei modelli, il secondo sottoinsieme contiene il 15\% delle oss restatnti e viene utilizzato per scegliere il modello migliore che soddifa  i criteri rischiesto. Sull'insieme di test si è valutata la performance del modello selezionato. 
-%
-
-%
-Il criterio di valutazione dei modelli è l'accuratezza. In tabella vengono riportati tutti i modelli provati ordinati per tale criterio. Notiamo che il modello che sull'insieme di convalida presenta un adattamento migliore è la multinomiale. Per l'albero di classificazione è stato adattato sia l'albero completo sia quello potato. L'albero potato presenta un lieve miglioramento rispetto all'albero completo
-% dati albero con profondità per i due 
-%
-
-%
-Il nostro obiettivo principale era però quello di non confondere lo shake con le altre attività per non bloccare la nostra ipotetica applicazione. Un shake errato infatti farebbe terminare l\rq{}attività in modo involontario intorromendo il flusso di dati raccolti.
-%
-
-%
-Focalizzandoci sulle matrici di corretta classificazione si nota che benchè i modelli abbiano una buona percentuale di accuratezza confondono molte volte lo shake con corsa tasca, cosa decisamente non voluta in quanto è molto probvbabile che questa applicazione sia utilizzata da quelli che vanno a correre. 
-%
-
-%
-Il tasso di veri positivi per i vari modelli è comunque superiore per il modello multinomiale che presentava in generale un'accuratezza maggiore. Tuttavia si ritiene che questi valori non siano sufficienti per il nostro problema. Come risolvere questo cruccio?
-%
-
-%
-Utilizziamo dei pesi per le varie classi. Diminuendo il peso attrribuito alla classe il tesso di falsi positivi relativi alla classe shake diminuisce.
-%siamo certi che sia sempre così?
-Se la classe shake viene sottopesata, si classificano meno unità in tale classe, e ci si aspetta che le poche classificate siano realmente shake. 
-Adesso il problema diventa come scegliere i pesi ottimali da attribuire alle varie classi. Abbiamo scelto di far variare il peso della classe shake effettuando una ricerca di tipo sequenziale. Come punto di partenza, si sono utilizzati i pesi dati dalle frequenze relative in coiascuna classe. Il peso della classe shake è stato diviso per una sequenza crescente di interi. Il peso così ottenuto segue l\rq{}andamento in fugura. Operando in questo modo è stato possibile provare una sequenza più fitta di pesi piccoli avendo osservato che l\rq{}ottimo è raggiunto in quel range doi valori.
-%
-
-%
-Come detto, questo porta ad aumetare il tasso di veri positivi. Nel grafico viene riportato l\rq{}aumento del tasso di veri positivi per le varie combinazioni di peso provate (pesi via via decrescenti chiamati ocme iterazioni della ricerca sequenziale).
-Ovviamente questo comporta una diminuzione dell\rq{}accuratezza generale del modello. Per il problema analizzato si è disposti ad accettare un tasso di shake correttamente classificati non inferiore al 98\%. Si è quindi cercato il peso della classe shake che massimizzasse l\rq{}accuratezza sotto tale vincolo.
-Ovviamente Diminuendo il peso della classe shake, si sono dovuti aggiustare i pesi delle altre classi in modo che sommino ad 1
-%
-
-%
-Questo tipo di approccio è stato applicato a tutti i modelli precedentemente applicati
-%perché non c é l\rq{}albero???? AGGIUNGERLO ANCHE SE NON CAMBIA
-
+\end{frame}
 \end{document}

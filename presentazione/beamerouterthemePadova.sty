@@ -55,5 +55,21 @@
 	\fi
 }
 
+
+\defbeamertemplate*{background canvas}{sep}
+    {%
+      \color{rossoPantano}\vrule width\paperwidth height\paperheight% added bg color
+    }
+
+\BeforeBeginEnvironment{frame}{%
+    \setbeamertemplate{background canvas}[pd theme]%
+    }
+
+    \makeatletter
+    \define@key{beamerframe}{sep}[true]{%
+      \setbeamertemplate{background canvas}[sep]%
+    }
+    \makeatother
+
 \mode
 <all>
