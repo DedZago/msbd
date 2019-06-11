@@ -140,18 +140,19 @@ shake & 11.480 & 14.663 & 16.968 &  $\cdots$ & 8.474\\
 \begin{table}[H]
 	\centering
 	\begin{tabular}{ll}
-		\texttt{minA}& Minimo dell'accelerazione.\\
-		\texttt{medA}& Mediana dell'accelerazione.\\
-		\texttt{varA}& Varianza dell'accelerazione.\\
-		\texttt{maxA}& Massimo dell'accelerazione.\\
-		\texttt{meanA}& Media dell'accelerazione.\\
-		\texttt{MVDeriv}& Media del valore assoluto della derivata seconda.
+		\texttt{minA}& minimo dell'accelerazione\\
+		\texttt{medA}& mediana dell'accelerazione\\
+		\texttt{varA}& varianza dell'accelerazione\\
+		\texttt{maxA}& massimo dell'accelerazione\\
+		\texttt{meanA}& media dell'accelerazione\\
+		\texttt{MVDeriv}& media del valore assoluto della derivata seconda.
 	\end{tabular}
 \end{table}
+\pause
+\texttt{MVDeriv} serve per discriminare le alte frequenze dalle basse frequenze.\\
 \end{frame}
 
 \begin{frame}{\texttt{MVDeriv}}
-\texttt{MVDeriv} serve per discriminare le alte frequenze dalle basse frequenze.\\
 \bigskip
 L'operazione di derivazione all'istante $t$ è approssimata con\cite{NumpyGradientNumPy}
 \[
@@ -260,12 +261,18 @@ Per il problema in analisi, questi valori non sono sufficienti.
 Come fare?
 \end{frame}
 
-\begin{frame}{Pesi}
-Riducendo il peso della classe {\em shake}, si riduce il tasso di {\em shake} erroneamente classificati.
-
-\textbf{Ma come scegliere i pesi?} \pause Ricerca sequenziale
+\begin{frame}{I pesi}
+La percentuale di \emph{shake} correttamente classificati e l\rq{}accuratezza del modello variano in base al peso attribuito alla classe \emph{shake}.
 \begin{figure}[H]
-\includegraphics[width=0.5\textwidth]{../figure/andamento-pesi.png}
+\includegraphics[width=\textwidth]{../figure/acc-vs-veripos-qda.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{I pesi}
+\textbf{Ma come scegliere i pesi?} \pause Ricerca sequenziale
+
+\begin{figure}[H]
+\includegraphics[width=0.6\textwidth]{../figure/andamento-pesi.png}
 \end{figure}
 
 \end{frame}
@@ -277,21 +284,11 @@ superiore al $98\%$.
 \input{../relazione/tex/accuracy-table-pen.tex}
 \end{frame}
 
-\begin{frame}{I modelli pesati}
+\begin{frame}{Il modello pesato}
 \begin{figure}[H]
 \includegraphics[width=0.8\textwidth]{../figure/confusionMatrix-QDA-penalizzata.png}
 \end{figure}
 \end{frame}
-
-\begin{frame}{Pesi}
-\begin{center}
-\end{center}
-\begin{figure}[H]
-\includegraphics[width=0.8\textwidth]{../figure/acc-vs-veripos-qda.png}  
-\end{figure}
-
-\end{frame}
-
 
 \begin{frame}{Sull'insieme di verifica}
 \begin{columns}[T] % align columns
@@ -314,5 +311,11 @@ superiore al $98\%$.
 \section{Bibliografia}
 \begin{frame}{Bibliografia}
 \printbibliography
+\end{frame}
+
+\begin{frame}
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{../figure/vodafone.png}
+\end{figure}
 \end{frame}
 \end{document}
